@@ -9,6 +9,7 @@ set wildmenu              " show matches on tab-completion
 set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
 set foldmethod=syntax     " fold code as defined by syntax
+set foldlevel=3
 
 " indentation preferences
 set smarttab
@@ -28,3 +29,10 @@ set title                 " show the file name in window title of terminal
 set number                " show line numbers
 set ruler                 " show current line, column, and relative position in file
 set showmode              " show current mode (insert, replace, visual)
+
+" highlight past 80 columns
+highlight OverLength cterm=reverse
+match OverLength /\%81v.*/
+
+" to write to protected files
+cmap w!! %!sudo tee %
