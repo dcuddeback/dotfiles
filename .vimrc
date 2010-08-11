@@ -25,7 +25,6 @@ set cindent
 set formatoptions=croql
 
 " display options
-set title                 " show the file name in window title of terminal
 set number                " show line numbers
 set ruler                 " show current line, column, and relative position in file
 set showmode              " show current mode (insert, replace, visual)
