@@ -28,6 +28,8 @@ set formatoptions=croql
 set number                " show line numbers
 set ruler                 " show current line, column, and relative position in file
 set showmode              " show current mode (insert, replace, visual)
+set list                  " show tabs as '^I'
+set listchars=trail:~     " show trailing whitespace
 
 " highlight past 80 columns
 highlight OverLength cterm=reverse
