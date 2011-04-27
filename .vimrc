@@ -47,9 +47,19 @@ setlocal cursorline   " enable in active window just after vim loads
 " to write to protected files
 cmap w!! %!sudo tee %
 
+" NERDTree
 map <F2> :NERDTreeToggle<CR>
+let NERDTreeChDirMode = 2         " keep working directory set to NERD's root node
+let NERDTreeWinPos    = "right"
+let NERDTreeWinSize   = 35
 
-let NERDTreeChDirMode=2   " keep working directory set to NERD's root node
+" taglist
+map <F3> :TlistToggle<CR>
+let Tlist_WinWidth                = 45
+let Tlist_Show_Menu               = 1
+let Tlist_Auto_Open               = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_File_Fold_Auto_Close    = 1
 
 " tabs
 nmap ,tt  :tabnew<CR>
