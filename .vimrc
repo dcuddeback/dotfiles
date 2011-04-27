@@ -61,6 +61,13 @@ let Tlist_Auto_Open               = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_File_Fold_Auto_Close    = 1
 
+" fix grep in OSX
+let Grep_Find_Use_Xargs = 0
+
+" quickfix
+nmap ,en  :cnext<CR>
+nmap ,eN  :cprevious<CR>
+
 " tabs
 nmap ,tt  :tabnew<CR>
 nmap ,tn  :tabn<CR>
