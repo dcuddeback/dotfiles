@@ -16,6 +16,7 @@ set smarttab
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set backspace=2
 set autoindent
 
 " C formatting options
@@ -28,8 +29,11 @@ set formatoptions=croql
 set number                " show line numbers
 set ruler                 " show current line, column, and relative position in file
 set showmode              " show current mode (insert, replace, visual)
-"set list                  " show tabs as '^I'
-"set listchars=trail:~     " show trailing whitespace
+set nowrap                " don't wrap long lines
+set novisualbell          " no blinking
+set noerrorbells          " no noise
+set list                  " show hidden characters
+set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:.
 
 " highlight current line in active window
 autocmd WinEnter * setlocal cursorline
