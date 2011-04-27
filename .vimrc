@@ -28,12 +28,29 @@ set formatoptions=croql
 set number                " show line numbers
 set ruler                 " show current line, column, and relative position in file
 set showmode              " show current mode (insert, replace, visual)
-set list                  " show tabs as '^I'
-set listchars=trail:~     " show trailing whitespace
+"set list                  " show tabs as '^I'
+"set listchars=trail:~     " show trailing whitespace
+
+" highlight current line in active window
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+setlocal cursorline   " enable in active window just after vim loads
 
 " highlight past 80 columns
-highlight OverLength cterm=reverse
-match OverLength /\%81v.*/
+"highlight OverLength cterm=reverse
+"match OverLength /\%81v.*/
 
 " to write to protected files
 cmap w!! %!sudo tee %
+
+map <F2> :NERDTreeToggle<CR>
+
+let NERDTreeChDirMode=2   " keep working directory set to NERD's root node
+
+" tabs
+nmap ,tt  :tabnew<CR>
+nmap ,tn  :tabn<CR>
+nmap ,tN  :tabp<CR>
+
+" abbreviations
+imap habtm  has_and_belongs_to_many
