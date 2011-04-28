@@ -62,6 +62,8 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_File_Fold_Auto_Close    = 1
 
 " fix grep in OSX
+map <F8> :GrepBuffer<CR><CR>
+map <F9> :Rgrep<CR><CR>
 let Grep_Find_Use_Xargs = 0
 
 " quickfix
@@ -72,6 +74,9 @@ nmap ,eN  :cprevious<CR>
 nmap ,tt  :tabnew<CR>
 nmap ,tn  :tabn<CR>
 nmap ,tN  :tabp<CR>
+
+" expand surrounding code-folds
+nmap zp  zozjzo2zkzozj
 
 " abbreviations
 imap habtm  has_and_belongs_to_many
