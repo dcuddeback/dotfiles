@@ -8,8 +8,11 @@ if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
-#export PS1='\e[1;32m\h\e[0m:\e[1;34m\w\e[1;33m$(__git_ps1) \e[0m$ '
-export PS1='\e[1;32m\h\e[0m:\e[1;34m\w \e[0m$ '
+GREEN='\[\033[1;32m\]'
+BLUE='\[\033[1;34m\]'
+DEFAULT='\[\033[0m\]'
+
+export PS1="${GREEN}\h${DEFAULT}:${BLUE}\W${DEFAULT} \$ "
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
