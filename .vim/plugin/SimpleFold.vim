@@ -74,7 +74,7 @@ function! Foldsearch(search)
       else
     "Default value, suitable for Ruby scripts
     "\(^\s*\(\(def\|class\|module\)\s\)\)\|^\s*[#%"0-9]\{0,4\}\s*{\({{\|!!\)
-    let searchre = '\v(^\s*(def|class|module|attr_reader|attr_accessor|alias_method)\s' . 
+    let searchre = '\v(^\s*(def|class|module|attr_reader|attr_accessor|alias_method|describe|context)\s' .
                  \ '|^\s*\w+attr_(reader|accessor)\s|^\s*[#%"0-9]{0,4}\s*\{(\{\{|!!))' .
                  \ '|^\s*[A-Z]\w+\s*\='
     let b:foldsearchexpr = searchre
