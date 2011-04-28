@@ -4,6 +4,10 @@ if [ -f /opt/local/etc/bash_completion ]; then
   . /opt/local/etc/bash_completion
 fi
 
+if [ -f /usr/local/git/contrib/completion/git-completion.bash]; then
+  . /usr/local/git/contrib/completion/git-completion.bash
+fi
+
 #export PS1='\e[1;32m\h\e[0m:\e[1;34m\w\e[1;33m$(__git_ps1) \e[0m$ '
 export PS1='\e[1;32m\h\e[0m:\e[1;34m\w \e[0m$ '
 
