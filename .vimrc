@@ -36,8 +36,12 @@ set list                  " show hidden characters
 set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:.
 
 " highlight current line in active window
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+autocmd WinEnter      * setlocal cursorline
+autocmd WinLeave      * setlocal nocursorline
+autocmd InsertEnter   * setlocal nocursorline
+autocmd InsertLeave   * setlocal cursorline
+autocmd CursorHoldI   * setlocal cursorline
+autocmd CursorMovedI  * setlocal nocursorline
 setlocal cursorline   " enable in active window just after vim loads
 
 " highlight past 80 columns
