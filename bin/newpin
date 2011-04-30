@@ -52,17 +52,21 @@ end
 
 if mnemonic
   word_choices = File.open(dict_path, 'r') do |dict|
-    dict.each_line.find_all { |line| line.strip.length == digits }
+    dict.each_line.find_all { |line| line.strip.length == digits }.map(&:strip)
   end
 
-  unique_pins = word_choices.map { |word| mnemonic_pin(word) }.uniq.count
-  words       = word_choices.shuffle.slice(0...count).map(&:strip)
+  pin_choices = word_choices.inject({}) do |hash, word|
+    pin       = mnemonic_pin(word)
+    hash[pin] ||= []
+    hash[pin] << word
+    hash
+  end
 
-  $stderr.puts "#{word_choices.count} possible #{digits}-letter mnemonics map to #{unique_pins} unique PINs"
+  $stderr.puts "#{word_choices.count} possible #{digits}-letter mnemonics map to #{pin_choices.count} unique PINs"
 
 
-  words.each do |word|
-    puts "#{mnemonic_pin(word)} -> #{word}"
+  pin_choices.keys.shuffle.slice(0...count).each do |pin|
+    puts "#{pin} -> #{pin_choices[pin].join(', ')}"
   end
 else
   count.times do
