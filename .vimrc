@@ -82,5 +82,8 @@ nmap ,tN  :tabp<CR>
 " expand surrounding code-folds
 nmap zp  zozjzo2zkzozj
 
+" remove trailing white-space when saving a file
+autocmd BufWritePre * :%s/\s\+$//e
+
 " abbreviations
 imap habtm  has_and_belongs_to_many
