@@ -8,6 +8,7 @@ if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
+RED='\[\033[1;31m\]'
 GREEN='\[\033[1;32m\]'
 YELLOW='\[\033[1;33m\]'
 BLUE='\[\033[1;34m\]'
@@ -17,7 +18,7 @@ function __conditional_git_ps1 {
   (command -v __git_ps1 > /dev/null) && __git_ps1
 }
 
-export PS1="${GREEN}\h${DEFAULT}:${BLUE}\W${YELLOW}\$(__conditional_git_ps1)${DEFAULT} \$ "
+export PS1="${GREEN}\h${DEFAULT}:${BLUE}\W${YELLOW}\`status=\$?; __conditional_git_ps1; if [[ \$status -ne 0 ]]; then echo -ne \"${RED} [\$status]\"; fi\`${DEFAULT} \$ "
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
