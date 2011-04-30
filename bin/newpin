@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+
+# Generate suggestions for a new PIN number.
+
+require 'optparse'
+
+# translates +word+ into a string of digits to be typed on a keypad
+def mnemonic_pin(word)
+  word.each_char.map { |char| mnemonic_digit(char) }.join
+end
+
+# calculates which number on a numeric keypad represents +char+
+def mnemonic_digit(char)
+  char.downcase!
+  n = char.ord - 'a'.ord
+  n -= 1  if char.ord >= 'q'.ord
+  n -= 1  if char.ord >= 'x'.ord
+
+  2 + n / 3
+end
+
+# options
+count     = 10
+digits    = 4
+mnemonic  = false
+dict_path = '/usr/share/dict/words'
+
+opts = OptionParser.new do |opt|
+  opt.on('-c', '--count=COUNT', 'Number of PINs to generate (default: 10).') do |arg|
+    count = arg.to_i
+  end
+
+  opt.on('-d', '--digits=DIGITS', 'Number of digits in generated PINs (default: 4).') do |arg|
+    digits = arg.to_i
+  end
+
+  opt.on('-m', '--mnemonic', 'Generate PINs with mnemonics.') do
+    mnemonic = true
+  end
+
+  opt.on('-D', '--dict=FILE', 'Choose a dictionary file for mnemonics (default: /usr/share/dict/words).') do |arg|
+    dict_path = arg
+  end
+end
+
+begin
+  opts.parse!
+rescue OptionParser::InvalidOption => exception
+  abort opts.help
+end
+
+
+if mnemonic
+  word_choices = File.open(dict_path, 'r') do |dict|
+    dict.each_line.find_all { |line| line.strip.length == digits }
+  end
+
+  unique_pins = word_choices.map { |word| mnemonic_pin(word) }.uniq.count
+  words       = word_choices.shuffle.slice(0...count).map(&:strip)
+
+  $stderr.puts "#{word_choices.count} possible #{digits}-letter mnemonics map to #{unique_pins} unique PINs"
+
+
+  words.each do |word|
+    puts "#{mnemonic_pin(word)} -> #{word}"
+  end
+else
+  count.times do
+    puts digits.times.map{rand(10)}.join
+  end
+end
