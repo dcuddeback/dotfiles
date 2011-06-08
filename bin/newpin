@@ -23,6 +23,7 @@ end
 count     = 10
 digits    = 4
 mnemonic  = false
+lookup    = nil
 dict_path = '/usr/share/dict/words'
 
 opts = OptionParser.new do |opt|
@@ -38,6 +39,10 @@ opts = OptionParser.new do |opt|
     mnemonic = true
   end
 
+  opt.on('-l', '--lookup=PIN', 'Lookup possible mnemonics for PIN.') do |arg|
+    lookup = arg
+  end
+
   opt.on('-D', '--dict=FILE', 'Choose a dictionary file for mnemonics (default: /usr/share/dict/words).') do |arg|
     dict_path = arg
   end
@@ -49,8 +54,16 @@ rescue OptionParser::InvalidOption => exception
   abort opts.help
 end
 
+if lookup
+  lookup.strip!
 
-if mnemonic
+  File.open(dict_path, 'r') do |dict|
+    dict.each_line do |word|
+      word.strip!
+      puts word if word.length == lookup.length && mnemonic_pin(word) == lookup
+    end
+  end
+elsif mnemonic
   word_choices = File.open(dict_path, 'r') do |dict|
     dict.each_line.find_all { |line| line.strip.length == digits }.map(&:strip)
   end
