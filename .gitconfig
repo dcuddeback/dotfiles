@@ -1,5 +1,8 @@
+[core]
+  excludesfile = ~/.gitignore
+
 [user]
-  name  = "David Cuddeback"
+  name  = David Cuddeback
   email = "david.cuddeback@gmail.com"
 
 [color]
@@ -8,6 +11,13 @@
   interactive = auto
   status      = auto
 
+[rebase]
+  autosquash = true
+
+[merge]
+  tool = vimdiff
+
 [alias]
   plog    = "log --pretty=oneline"
   active  = "branch --contains 'HEAD@{2 weeks ago}'"
+  tree    = log --graph --pretty=oneline --abbrev-commit --decorate --color
