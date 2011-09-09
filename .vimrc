@@ -1,8 +1,10 @@
 set nocompatible          " don't attempt to be compatible with old-style vi
 
+call pathogen#infect()
+
 behave xterm
-filetype plugin indent on
 syntax on
+filetype plugin indent on
 
 " editor behavior
 set wildmenu              " show matches on tab-completion
