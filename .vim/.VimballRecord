@@ -1,1 +1,0 @@
-ctk.vba: call delete('/Users/david/.vim/.compiler_info')|call delete('/Users/david/.vim/plugin/ctk.vim')|call delete('/Users/david/.vim/doc/ctk.txt')
