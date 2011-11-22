@@ -63,7 +63,7 @@ let NERDTreeWinSize   = 35
 map <F3> :TlistToggle<CR>
 let Tlist_WinWidth                = 45
 let Tlist_Show_Menu               = 1
-let Tlist_Auto_Open               = 1
+let Tlist_Auto_Open               = 0
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_File_Fold_Auto_Close    = 1
 
