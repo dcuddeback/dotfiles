@@ -39,9 +39,10 @@
   tool = vimdiff
 
 [alias]
-  summary = "log --pretty=oneline"
-  active  = "branch --contains 'HEAD@{2 weeks ago}'"
+  summary = log --pretty=oneline
+  active  = branch --contains 'HEAD@{2 weeks ago}'
   tree    = log --graph --pretty=oneline --abbrev-commit --decorate --color
+  recent  = log --graph --pretty=oneline --abbrev-commit --decorate --color -10
   message = log --format=format:%s -1
   last    = log --format=format:%H -1
   revs    = log --format=format:%H
