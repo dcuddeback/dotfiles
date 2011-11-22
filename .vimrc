@@ -79,6 +79,12 @@ nmap ,tt  :tabnew<CR>
 nmap ,tn  :tabn<CR>
 nmap ,tN  :tabp<CR>
 
+" copy/cut/paste
+vnoremap <C-X> "+x
+vnoremap <C-C> "+y
+nnoremap <C-V> "+gP
+cnoremap <C-V> <C-R>+
+
 " expand surrounding code-folds
 nmap zp  zozjzo2zkzozj
 
