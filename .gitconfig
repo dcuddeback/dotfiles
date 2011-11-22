@@ -5,11 +5,32 @@
   name  = David Cuddeback
   email = "david.cuddeback@gmail.com"
 
+[core]
+  whitespace   = tab-in-indent,tabwidth=2
+  excludesfile = ~/.gitignore
+
 [color]
-  branch      = auto
-  diff        = auto
-  interactive = auto
-  status      = auto
+  ui = auto
+
+[status]
+  relativePaths     = true
+  submodulesummary  = true
+
+[rebase]
+  autosquash = true
+
+[apply]
+  ignorewhitespace  = change
+
+[merge]
+  tool = "mvimdiff"
+
+[mergetool]
+  prompt = false
+
+; Use MacVim as a mergetool
+[mergetool "mvimdiff"]
+  cmd = mvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 
 [rebase]
   autosquash = true
@@ -18,6 +39,9 @@
   tool = vimdiff
 
 [alias]
-  plog    = "log --pretty=oneline"
+  summary = "log --pretty=oneline"
   active  = "branch --contains 'HEAD@{2 weeks ago}'"
   tree    = log --graph --pretty=oneline --abbrev-commit --decorate --color
+  message = log --format=format:%s -1
+  last    = log --format=format:%H -1
+  revs    = log --format=format:%H
