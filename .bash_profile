@@ -1,9 +1,11 @@
 source ~/.bashrc
 
+# bash completion from MacPorts
 if [ -f /opt/local/etc/bash_completion ]; then
   . /opt/local/etc/bash_completion
 fi
 
+# bash completion for git installed by MacPorts
 if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
@@ -18,16 +20,27 @@ function __conditional_git_ps1 {
   (command -v __git_ps1 > /dev/null) && __git_ps1
 }
 
-export PS1="${GREEN}\h${DEFAULT}:${BLUE}\W${YELLOW}\`status=\$?; __conditional_git_ps1; if [[ \$status -ne 0 ]]; then echo -ne \"${RED} [\$status]\"; fi\`${DEFAULT} \$ "
-
+export PS1="${GREEN}\h${DEFAULT}:${BLUE}\W${YELLOW}\$(__conditional_git_ps1)${DEFAULT} \$ "
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-
 export EDITOR=vim
 export GEMEDITOR=mvim
-
 export PAGER=less
 
 alias grep='grep --color=auto'
-
 alias irc='screen -d -RR -S irc irssi'
+
+# JAVA_HOME for OSX
+if [ -d /System/Library/Frameworks/JavaVM.framework/Home/ ]; then
+  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+fi
+
+# JAVA_HOME for Linux
+if [ -d /usr/lib/jvm/java-6-openjdk/ ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
+fi
+
+# load settings specific to the local machine
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi
