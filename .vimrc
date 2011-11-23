@@ -1,10 +1,11 @@
 set nocompatible          " don't attempt to be compatible with old-style vi
 
+call pathogen#infect()
+
 behave xterm
-filetype plugin indent on
 syntax on
 colorscheme jellybeans
-
+filetype plugin indent on
 
 " editor behavior
 set wildmenu              " show matches on tab-completion
@@ -92,6 +93,14 @@ nmap zp  zozjzo2zkzozj
 
 " remove trailing white-space when saving a file
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Convert words to Ruby symbols
+imap <C-k> <Esc>bi:<Esc>Ea
+nmap <C-k> lbi:<Esc>E
+
+" Add hash-rocket in Ruby
+imap <C-l> <Space>=><Space>
+nmap <C-l> i<Space>=><Space><Esc>
 
 " abbreviations
 imap habtm  has_and_belongs_to_many
