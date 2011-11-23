@@ -1,0 +1,36 @@
+!------------------------------------------------------------------------------!
+! urxvt                                                                        !
+!------------------------------------------------------------------------------!
+! general
+URxvt*loginShell:       true
+URxvt*saveLines:        32767
+URxvt*jumpScroll:       false
+URxvt*skipScroll:       true
+URxvt*meta8:            false
+
+! scrollbar
+URxvt*scrollBar:        true
+URxvt*scrollBar_right:  true
+URxvt*scrollstyle:      plain
+
+! colors
+!URxvt*background:       Black
+!URxvt*foreground:       #CCCCCC
+URxvt*transparent:      true
+URxvt*reverseVideo:     true
+URxvt*shading:          25
+URxvt*fading:           25
+
+! fonts
+URxvt*font:             -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
+URxvt*boldFont:         -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
+URxvt*italicFont:       -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
+URxvt*boldItalicFont:   -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
+
+! URL handling
+!URxvt*perl-ext-common:  default,matcher,url-select
+URxvt*perl-ext-common:  default,matcher
+URxvt*urlLauncher:      chromium-browser
+URxvt*matcher.button:   1
+URxvt*underlineURLs:    true
+!URxvt*keysum.M-u:       perl:url-select:select_next
