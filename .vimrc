@@ -3,6 +3,8 @@ set nocompatible          " don't attempt to be compatible with old-style vi
 behave xterm
 filetype plugin indent on
 syntax on
+colorscheme jellybeans
+
 
 " editor behavior
 set wildmenu              " show matches on tab-completion
