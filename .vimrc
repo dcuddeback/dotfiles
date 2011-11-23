@@ -11,7 +11,7 @@ filetype plugin indent on
 set wildmenu              " show matches on tab-completion
 set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
-set foldmethod=syntax     " fold code as defined by syntax
+set foldmethod=marker     " avoid slowness of foldmethod=syntax
 set foldlevel=3
 
 " indentation preferences
@@ -21,6 +21,7 @@ set tabstop=2
 set shiftwidth=2
 set backspace=2
 set autoindent
+set textwidth=100
 
 " C formatting options
 set cinoptions=t0,+2s,g0
