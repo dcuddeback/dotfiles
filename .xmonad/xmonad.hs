@@ -25,7 +25,7 @@ main = do
 
 -- some nice colors for the prompt windows to match the dzen status bar.
 myXPConfig = defaultXPConfig
-  { font                = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
+  { font                = "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u"
   , fgColor             = "#0096d1"
   , bgColor             = "#000000"
   , bgHLight            = "#000000"

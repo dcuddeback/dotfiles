@@ -22,10 +22,10 @@ URxvt*shading:          25
 URxvt*fading:           25
 
 ! fonts
-URxvt*font:             -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
-URxvt*boldFont:         -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
-URxvt*italicFont:       -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-u
-URxvt*boldItalicFont:   -*-terminus-bold-*-*-*-14-*-*-*-*-*-*-u
+URxvt*font:             -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+URxvt*boldFont:         -*-terminus-bold-r-*-*-14-*-*-*-*-*-*-u
+URxvt*italicFont:       -*-terminus-medium-o-*-*-14-*-*-*-*-*-*-u
+URxvt*boldItalicFont:   -*-terminus-bold-o-*-*-14-*-*-*-*-*-*-u
 
 ! URL handling
 !URxvt*perl-ext-common:  default,matcher,url-select
