@@ -23,7 +23,7 @@
   ignorewhitespace  = change
 
 [merge]
-  tool = "mvimdiff"
+  tool = "vimdiff"
 
 [mergetool]
   prompt = false
