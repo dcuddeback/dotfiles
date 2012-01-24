@@ -13,6 +13,7 @@ set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
 set foldmethod=marker     " avoid slowness of foldmethod=syntax
 set foldlevel=3
+set nostartofline         " keep cursor in same column during motion commands
 
 " indentation preferences
 set smarttab
@@ -37,7 +38,7 @@ set nowrap                " don't wrap long lines
 set novisualbell          " no blinking
 set noerrorbells          " no noise
 set list                  " show hidden characters
-set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:.
+set listchars=tab:>=,trail:~,extends:>,precedes:<,nbsp:.
 
 " highlight current line in active window
 autocmd WinEnter      * setlocal cursorline
@@ -48,12 +49,23 @@ autocmd CursorHoldI   * setlocal cursorline
 autocmd CursorMovedI  * setlocal nocursorline
 setlocal cursorline   " enable in active window just after vim loads
 
+let mapleader = ","
+
 " highlight past 80 columns
 "highlight OverLength cterm=reverse
 "match OverLength /\%81v.*/
 
 " to write to protected files
 cmap w!! %!sudo tee %
+
+map  <PageUp>   <C-U>
+map  <PageDown> <C-D>
+imap <PageUp>   <C-O><C-U>
+imap <PageDown> <C-O><C-D>
+
+" fix C-Page{Up,Down} in rxvt (sends different key codes)
+nmap <ESC>[5^ <C-PageUp>
+nmap <ESC>[6^ <C-PageDown>
 
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
