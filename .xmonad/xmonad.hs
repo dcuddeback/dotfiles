@@ -2,25 +2,48 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
+import System.IO
 
 -- utils
+import XMonad.Util.Run(spawnPipe)
 import XMonad.Prompt.Shell
 import XMonad.Prompt
 
 -- hooks
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 
 -- layouts
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Reflect
+import XMonad.Layout.Grid
+import XMonad.Layout.IM
+import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace (onWorkspace)
 
+-- for IM layout
+import Data.Ratio ((%))
+import Data.List (isInfixOf)
 
 main = do
-  xmonad $ defaultConfig
+  xmproc <- spawnPipe "xmobar --screen 1"
+  xmonad $ ewmh $ defaultConfig
     { borderWidth       = 1
     , focusFollowsMouse = False
+    , modMask           = myModMask
     , keys              = myKeys
-    , modMask           = myModMask -- Use Super instead of Alt
     , terminal          = "urxvt"
+    , workspaces        = myWorkspaces
+    , startupHook       = ewmhDesktopsStartup >> setWMName "LG3D"
+    , manageHook        = myManageHook  <+> manageDocks
+    , layoutHook        = myLayoutHook
+    , logHook           = dynamicLogWithPP $ xmobarPP
+      { ppOutput = hPutStrLn xmproc
+      , ppTitle  = xmobarColor "green" "" . shorten 50
+      }
     }
 
 -- some nice colors for the prompt windows to match the dzen status bar.
@@ -37,9 +60,62 @@ myXPConfig = defaultXPConfig
   }
 
 -------------------------------------------------------------------------------
+---- Workspaces --
+myWorkspaces :: [WorkspaceId]
+myWorkspaces = ["1:code", "2:web", "3:console", "4:mail", "5:chat", "6:misc", "7:VM", "8:vid"]
+
+-- logHook
+myLogHook :: Handle -> X ()
+myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
+
+-- xmobar
+customPP :: PP
+customPP = defaultPP
+  { ppHidden  = xmobarColor "#00FF00" ""
+  , ppCurrent = xmobarColor "#FF0000" "" . wrap "[" "]"
+  , ppUrgent  = xmobarColor "#FF0000" "" . wrap "*" "*"
+  , ppLayout  = xmobarColor "#FF0000" ""
+  , ppTitle   = xmobarColor "#00FF00" "" . shorten 80
+  , ppSep     = "<fc=#0033FF> | </fc>"
+  }
+
+-- manageHook
+myManageHook :: ManageHook
+myManageHook =  composeAll . concat $
+    [[isFullscreen               --> doFullFloat
+    , className =? "Xmessage"    --> doCenterFloat
+    , className =? "Pidgin"      --> doShift "5:chat"
+    , className =? "Skype"       --> doShift "5:chat"
+    , className =? "Mail"        --> doShift "4:mail"
+    , className =? "Thunderbird" --> doShift "4:mail"
+    ]]
+
+myLayoutHook = onWorkspace "5:chat" imLayout $ onWorkspace "4:mail" webL $ onWorkspace "7:VM" fullL $ onWorkspace "8:vid" fullL $ standardLayouts
+  where
+    standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| Grid ||| Full)
+
+    --Layouts
+    tiled         = smartBorders (ResizableTall 1 (2/100) (1/2) [])
+    reflectTiled  = (reflectHoriz tiled)
+    full          = noBorders Full
+    webL          = avoidStruts $ full ||| tiled ||| reflectHoriz tiled
+    fullL         = avoidStruts $ full
+
+    --Im Layout
+    imLayout      = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid) where
+                chatLayout    = Grid
+                ratio         = (1%9)
+                skypeRatio    = (1%8)
+                pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
+                skypeRoster   = (ClassName "Skype")     `And`
+                                (Not (Title "Options")) `And`
+                                (Not (Role "Chats"))    `And`
+                                (Not (Role "CallWindowForm"))
+
+-------------------------------------------------------------------------------
 ---- Terminal --
 myTerminal :: String
-myTerminal = "aterm"
+myTerminal = "urxvt"
 
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
@@ -54,9 +130,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask .|. shiftMask, xK_c ), kill)
 
-    -- opening program launcher / search engine
-    -- TODO: configure mod-P to show a launcher
-    ,((modMask , xK_p), shellPrompt myXPConfig)
+    -- opening program launcher
+    , ((modMask , xK_p), shellPrompt myXPConfig)
+
+    -- start a pomodoro
+    , ((modMask , xK_n), spawn "touch ~/.pomodoro_session")
 
     -- layouts
     , ((modMask, xK_space ), sendMessage NextLayout)
@@ -91,6 +169,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_q ), io (exitWith ExitSuccess))
     , ((modMask , xK_q ), restart "xmonad" True)
     ]
+
+    ++
+    -- mod-[1..9] %! Switch to workspace N
+    -- mod-shift-[1..9] %! Move client to workspace N
+    [((m .|. modMask, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
     ++
     -- mod-[w,e]        %! switch to twinview screen 1/2
