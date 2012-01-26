@@ -91,8 +91,8 @@ nmap ,en  :cnext<CR>
 nmap ,eN  :cprevious<CR>
 
 " tabs
-noremap <C-PageUp>   :tabnext<CR>
-noremap <C-PageDown> :tabprev<CR>
+noremap <C-PageUp>   :tabprev<CR>
+noremap <C-PageDown> :tabnext<CR>
 
 " copy/cut/paste
 vnoremap <C-X> "+x
