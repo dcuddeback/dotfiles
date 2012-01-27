@@ -32,9 +32,6 @@
 [mergetool "mvimdiff"]
   cmd = mvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 
-[rebase]
-  autosquash = true
-
 [merge]
   tool = vimdiff
 
