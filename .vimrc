@@ -1,5 +1,21 @@
 set nocompatible          " don't attempt to be compatible with old-style vi
 
+" NOTE: The following CamelCaseMotion definitions must be done before sourcing the plugin, according
+" the the plugin's README.
+
+" define CamelCastMotion motion commands
+map mw <Plug>CamelCaseMotion_w
+map mb <Plug>CamelCaseMotion_b
+map me <Plug>CamelCaseMotion_e
+
+" define CamelCaseMotion text objects
+omap imw <Plug>CamelCaseMotion_iw
+xmap imw <Plug>CamelCaseMotion_iw
+omap imb <Plug>CamelCaseMotion_ib
+xmap imb <Plug>CamelCaseMotion_ib
+omap ime <Plug>CamelCaseMotion_ie
+xmap imb <Plug>CamelCaseMotion_ib
+
 call pathogen#infect()
 
 behave xterm
