@@ -1,13 +1,10 @@
 [core]
   excludesfile = ~/.gitignore
+  whitespace   = tab-in-indent,tabwidth=2
 
 [user]
   name  = David Cuddeback
   email = "david.cuddeback@gmail.com"
-
-[core]
-  whitespace   = tab-in-indent,tabwidth=2
-  excludesfile = ~/.gitignore
 
 [color]
   ui = auto
