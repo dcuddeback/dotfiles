@@ -30,6 +30,7 @@ set noshowmatch           " don't jump to matching bracket after typing closing 
 set foldmethod=marker     " avoid slowness of foldmethod=syntax
 set foldlevel=3
 set nostartofline         " keep cursor in same column during motion commands
+set modeline              " read modelines
 
 " indentation preferences
 set smarttab
