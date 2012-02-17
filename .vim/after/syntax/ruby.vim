@@ -1,0 +1,1 @@
+syn keyword Keyword private_class_method
