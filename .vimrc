@@ -31,6 +31,7 @@ set foldmethod=marker     " avoid slowness of foldmethod=syntax
 set foldlevel=3
 set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
+set mouse=a               " enable mouse in all modes
 
 " indentation preferences
 set smarttab
@@ -72,9 +73,33 @@ let mapleader = ","
 "highlight OverLength cterm=reverse
 "match OverLength /\%81v.*/
 
+" use ; to enter command mode
+nnoremap ; :
+
+" reselect visual block after shift
+vnoremap < <gv
+vnoremap > >gv
+
+" shorter keystrokes for split navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" disable those dame arrow keys
+nnoremap <up>    <nop>
+nnoremap <down>  <nop>
+nnoremap <left>  <nop>
+nnoremap <right> <nop>
+inoremap <up>    <nop>
+inoremap <down>  <nop>
+inoremap <left>  <nop>
+inoremap <right> <nop>
+
 " to write to protected files
 cmap w!! %!sudo tee %
 
+" fix pageup and pagedown behavior
 map  <PageUp>   <C-U>
 map  <PageDown> <C-D>
 imap <PageUp>   <C-O><C-U>
