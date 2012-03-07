@@ -62,7 +62,7 @@ myXPConfig = defaultXPConfig
 -------------------------------------------------------------------------------
 ---- Workspaces --
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:code", "2:web", "3:console", "4:mail", "5:chat", "6:misc", "7:VM", "8:vid"]
+myWorkspaces = ["1:code1", "2:code2", "3:test", "4:console", "5:aux", "6:web", "7:mail", "8:chat", "9:misc", "0:system"]
 
 -- logHook
 myLogHook :: Handle -> X ()
@@ -84,13 +84,13 @@ myManageHook :: ManageHook
 myManageHook =  composeAll . concat $
     [[isFullscreen               --> doFullFloat
     , className =? "Xmessage"    --> doCenterFloat
-    , className =? "Pidgin"      --> doShift "5:chat"
-    , className =? "Skype"       --> doShift "5:chat"
-    , className =? "Mail"        --> doShift "4:mail"
-    , className =? "Thunderbird" --> doShift "4:mail"
+    , className =? "Pidgin"      --> doShift "8:chat"
+    , className =? "Skype"       --> doShift "8:chat"
+    , className =? "Mail"        --> doShift "7:mail"
+    , className =? "Thunderbird" --> doShift "7:mail"
     ]]
 
-myLayoutHook = onWorkspace "5:chat" imLayout $ onWorkspace "4:mail" webL $ onWorkspace "7:VM" fullL $ onWorkspace "8:vid" fullL $ standardLayouts
+myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ standardLayouts
   where
     standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 
