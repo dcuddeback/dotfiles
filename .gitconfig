@@ -13,6 +13,9 @@
   relativePaths     = true
   submodulesummary  = true
 
+[push]
+  default = upstream
+
 [rebase]
   autosquash = true
 
