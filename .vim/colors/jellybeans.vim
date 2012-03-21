@@ -11,13 +11,15 @@
 "
 " File:         jellybeans.vim
 " Maintainer:   NanoTech <http://nanotech.nanotechcorp.net/>
-" Version:      1.4
-" Last Change:  April 11th, 2011
-" Contributors: Daniel Herbert <http://pocket-ninja.com>,
+" Version:      1.5
+" Last Change:  January 15th, 2012
+" Contributors: Daniel Herbert <http://pocket-ninja.com/>,
 "               Henry So, Jr. <henryso@panix.com>,
-"               David Liang <bmdavll at gmail dot com>
+"               David Liang <bmdavll at gmail dot com>,
+"               Rich Healey (richoH),
+"               Andrew Wong (w0ng)
 "
-" Copyright (c) 2009-2011 NanoTech
+" Copyright (c) 2009-2012 NanoTech
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
 " of this software and associated documentation files (the "Software"), to deal
@@ -290,35 +292,42 @@ endfun
 call s:X("Normal","e8e8d3","151515","","White","")
 set background=dark
 
-if version >= 700
-  call s:X("CursorLine","","1c1c1c","","","Black")
-  call s:X("CursorColumn","","1c1c1c","","","Black")
-  call s:X("MatchParen","ffffff","80a090","bold","","DarkCyan")
-
-  call s:X("TabLine","000000","b0b8c0","italic","","Black")
-  call s:X("TabLineFill","9098a0","","","","Black")
-  call s:X("TabLineSel","000000","f0f0f0","italic,bold","Black","White")
-
-  " Auto-completion
-  call s:X("Pmenu","ffffff","606060","","White","Black")
-  call s:X("PmenuSel","101010","eeeeee","","Black","White")
+if !exists("g:jellybeans_use_lowcolor_black") || g:jellybeans_use_lowcolor_black
+    let s:termBlack = "Black"
+else
+    let s:termBlack = "Grey"
 endif
 
-call s:X("Visual","","404040","","","Black")
+if version >= 700
+  call s:X("CursorLine","","1c1c1c","","",s:termBlack)
+  call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
+  call s:X("MatchParen","ffffff","80a090","bold","","DarkCyan")
+
+  call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
+  call s:X("TabLineFill","9098a0","","","",s:termBlack)
+  call s:X("TabLineSel","000000","f0f0f0","italic,bold",s:termBlack,"White")
+
+  " Auto-completion
+  call s:X("Pmenu","ffffff","606060","","White",s:termBlack)
+  call s:X("PmenuSel","101010","eeeeee","",s:termBlack,"White")
+endif
+
+call s:X("Visual","","404040","","",s:termBlack)
 call s:X("Cursor","","b0d0f0","","","")
 
-call s:X("LineNr","605958","151515","none","Black","")
+call s:X("LineNr","605958","151515","none",s:termBlack,"")
 call s:X("Comment","888888","","italic","Grey","")
-call s:X("Todo","808080","","bold","White","Black")
+call s:X("Todo","808080","","bold","White",s:termBlack)
 
-call s:X("StatusLine","000000","dddddd","italic","Black","White")
+call s:X("StatusLine","000000","dddddd","italic","","White")
 call s:X("StatusLineNC","ffffff","403c41","italic","White","Black")
-call s:X("VertSplit","777777","403c41","italic","Black","Black")
+call s:X("VertSplit","777777","403c41","",s:termBlack,s:termBlack)
 call s:X("WildMenu","f0a0c0","302028","","Magenta","")
 
-call s:X("Folded","a0a8b0","384048","italic","Black","")
-call s:X("FoldColumn","a0a8b0","384048","","","Black")
-hi! link SignColumn FoldColumn
+call s:X("Folded","a0a8b0","384048","italic",s:termBlack,"")
+call s:X("FoldColumn","535D66","1f1f1f","","",s:termBlack)
+call s:X("SignColumn","777777","333333","","",s:termBlack)
+call s:X("ColorColumn","","000000","","",s:termBlack)
 
 call s:X("Title","70b950","","bold","Green","")
 
@@ -338,9 +347,9 @@ call s:X("PreProc","8fbfdc","","","LightBlue","")
 hi! link Operator Normal
 
 call s:X("Type","ffb964","","","Yellow","")
-call s:X("NonText","606060","151515","","Black","")
+call s:X("NonText","606060","151515","",s:termBlack,"")
 
-call s:X("SpecialKey","444444","1c1c1c","","Black","")
+call s:X("SpecialKey","444444","1c1c1c","",s:termBlack,"")
 
 call s:X("Search","f0a0c0","302028","underline","Magenta","")
 
@@ -365,10 +374,10 @@ hi! link diffAdded String
 
 " VimDiff
 
-call s:X("DiffAdd","","032218","","Black","DarkGreen")
-call s:X("DiffChange","","100920","","Black","DarkMagenta")
-call s:X("DiffDelete","220000","220000","","DarkRed","DarkRed")
-call s:X("DiffText","","000940","","","DarkRed")
+call s:X("DiffAdd","D2EBBE","437019","","White","DarkGreen")
+call s:X("DiffDelete","40000A","700009","","DarkRed","DarkRed")
+call s:X("DiffChange","","2B5B77","","White","DarkBlue")
+call s:X("DiffText","8fbfdc","000000","reverse","Yellow","")
 
 " PHP
 
@@ -406,6 +415,7 @@ call s:X("rubyRegexpSpecial","a40073","","","Magenta","")
 call s:X("rubyPredefinedIdentifier","de5577","","","Red","")
 
 " JavaScript
+
 hi! link javaScriptValue Constant
 hi! link javaScriptRegexpString rubyRegexp
 
@@ -413,20 +423,39 @@ hi! link javaScriptRegexpString rubyRegexp
 
 hi! link coffeeRegExp javaScriptRegexpString
 
+" Lua
+
+hi! link luaOperator Conditional
+
 " C
 
 hi! link cOperator Constant
 
 " Objective-C/Cocoa
+
 hi! link objcClass Type
 hi! link cocoaClass objcClass
 hi! link objcSubclass objcClass
 hi! link objcSuperclass objcClass
 hi! link objcDirective rubyClass
+hi! link objcStatement Constant
 hi! link cocoaFunction Function
 hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
+
+" Debugger.vim
+
+call s:X("DbgCurrent","DEEBFE","345FA8","","White","DarkBlue")
+call s:X("DbgBreakPt","","4F0037","","","DarkMagenta")
+
+" vim-indent-guides
+
+if !exists("g:indent_guides_auto_colors")
+  let g:indent_guides_auto_colors = 0
+endif
+call s:X("IndentGuidesOdd","","202020","","","")
+call s:X("IndentGuidesEven","","1c1c1c","","","")
 
 " Plugins, etc.
 
@@ -435,14 +464,18 @@ call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 
 " Manual overrides for 256-color terminals. Dark colors auto-map badly.
 if !s:low_color
-  hi StatusLineNC ctermbg=234
+  hi StatusLineNC ctermbg=235
   hi Folded ctermbg=236
-  hi FoldColumn ctermbg=236
+  hi FoldColumn ctermbg=234
   hi SignColumn ctermbg=236
-  hi DiffAdd ctermbg=22
-  hi DiffDelete ctermbg=52
-  hi DiffChange ctermbg=17
-  hi DiffText ctermbg=19
+  hi CursorColumn ctermbg=234
+  hi CursorLine ctermbg=234
+  hi SpecialKey ctermbg=234
+  hi NonText ctermbg=233
+  hi LineNr ctermbg=233
+  hi DiffText ctermfg=81
+  hi Normal ctermbg=233
+  hi DbgBreakPt ctermbg=53
 endif
 
 " delete functions {{{
