@@ -32,9 +32,6 @@
 [mergetool "mvimdiff"]
   cmd = mvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 
-[merge]
-  tool = vimdiff
-
 [alias]
   summary = log --pretty=oneline
   active  = branch --contains 'HEAD@{2 weeks ago}'
