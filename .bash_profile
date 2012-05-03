@@ -29,9 +29,13 @@ export PAGER=less
 
 alias grep='grep --color=auto'
 alias irc='screen -d -RR -S irc irssi'
-alias open='gnome-open'
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+
+if [ "$(uname)" == "Linux" ]
+then
+  alias open='gnome-open'
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
+fi
 
 # JAVA_HOME for OSX
 if [ -d /System/Library/Frameworks/JavaVM.framework/Home/ ]; then
