@@ -1,3 +1,7 @@
+if [ -f ~/.bashrc_default ]; then
+  source ~/.bashrc_default
+fi
+
 PATH=/opt/local/bin:/opt/local/sbin:$PATH   # macports
 PATH=$PATH:/opt/local/lib/postgresql90/bin  # postgresql90
 PATH=$PATH:/opt/local/lib/mysql5/bin        # mysql
