@@ -17,5 +17,8 @@ PATH=$HOME/bin:$PATH                        # custom scripts
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# NVM
+[[ -s "$HOME/.nvm/nvm.sh" ]]      && source "$HOME/.nvm/nvm.sh"
+
 export PATH
 export BASHRC=true
