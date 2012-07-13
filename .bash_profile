@@ -53,3 +53,6 @@ if [ -f ~/.bash_local ]; then
 fi
 
 eval "$(rbenv init -)"
+
+# Use Bundler's --binstubs
+export PATH=./bin:$PATH
