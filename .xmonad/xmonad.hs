@@ -82,12 +82,13 @@ customPP = defaultPP
 -- manageHook
 myManageHook :: ManageHook
 myManageHook =  composeAll . concat $
-    [[isFullscreen               --> doFullFloat
-    , className =? "Xmessage"    --> doCenterFloat
-    , className =? "Pidgin"      --> doShift "8:chat"
-    , className =? "Skype"       --> doShift "8:chat"
-    , className =? "Mail"        --> doShift "7:mail"
-    , className =? "Thunderbird" --> doShift "7:mail"
+    [[isFullscreen                  --> doFullFloat
+    , className =? "Xmessage"       --> doCenterFloat
+    , className =? "Pidgin"         --> doShift "8:chat"
+    , className =? "Skype"          --> doShift "8:chat"
+    , className =? "Mail"           --> doShift "7:mail"
+    , className =? "Thunderbird"    --> doShift "7:mail"
+    , className =? "Xfce4-notifyd"  --> doIgnore
     ]]
 
 myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ standardLayouts
