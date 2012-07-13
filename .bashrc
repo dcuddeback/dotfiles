@@ -5,6 +5,7 @@ fi
 PATH=/opt/local/bin:/opt/local/sbin:$PATH   # macports
 PATH=$PATH:/opt/local/lib/postgresql90/bin  # postgresql90
 PATH=$PATH:/opt/local/lib/mysql5/bin        # mysql
+PATH=~/.rbenv/bin:$PATH                     # rbenv
 
 # Android SDK tools
 if [ -d $HOME/android-sdk-mac_x86/tools ]; then
