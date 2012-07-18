@@ -147,3 +147,6 @@ nmap zp  zozjzo2zkzozj
 
 " remove trailing white-space when saving a file
 autocmd BufWritePre * :%s/\s\+$//e
+
+" treat hamlc as haml
+autocmd BufRead,BufNewFile *.hamlc set filetype=haml
