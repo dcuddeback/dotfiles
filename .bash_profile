@@ -28,7 +28,7 @@ export GEMEDITOR=mvim
 export PAGER=less
 
 alias grep='grep --color=auto'
-alias irc='screen -d -RR -S irc irssi'
+alias irc='screen -d -RR -S irc weechat-curses'
 
 if [ "$(uname)" == "Linux" ]
 then
