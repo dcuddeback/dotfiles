@@ -118,6 +118,11 @@ let NERDTreeWinSize   = 35
 " tagbar
 map <F3> :TagbarToggle<CR>
 
+" ctags
+set tags=./tags;/
+map <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " fix grep in OSX
 map <F8> :GrepBuffer<CR><CR>
 map <F9> :Rgrep<CR><CR>
