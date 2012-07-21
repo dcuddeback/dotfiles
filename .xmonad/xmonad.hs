@@ -103,15 +103,15 @@ myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ stand
     fullL         = avoidStruts $ full
 
     --Im Layout
-    imLayout      = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid) where
-                chatLayout    = Grid
-                ratio         = (1%9)
-                skypeRatio    = (1%8)
-                pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
-                skypeRoster   = (ClassName "Skype")     `And`
-                                (Not (Title "Options")) `And`
-                                (Not (Role "Chats"))    `And`
-                                (Not (Role "CallWindowForm"))
+    imLayout      = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid)
+      where
+        chatLayout    = Grid
+        ratio         = (1%9)
+        skypeRatio    = (1%8)
+        pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
+        skypeRoster   = (ClassName "Skype") `And`
+                        (Role "")           `And`
+                        (Not (Title "Options"))
 
 -------------------------------------------------------------------------------
 ---- Terminal --
