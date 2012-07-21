@@ -29,6 +29,8 @@ export PAGER=less
 
 alias grep='grep --color=auto'
 alias irc='screen -d -RR -S irc weechat-curses'
+alias can-haz='sudo apt-get install'
+alias can-haz?='apt-cache search'
 
 if [ "$(uname)" == "Linux" ]
 then
