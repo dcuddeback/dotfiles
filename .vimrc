@@ -236,6 +236,14 @@ set tags=./tags;/
 map <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" ri.vim
+nnoremap <silent> <Leader>r :call ri#OpenSearchPrompt(1)<CR>
+nnoremap <silent> <Leader>R :call ri#OpenSearchPrompt(0)<CR>
+nnoremap <silent> <Leader>k :call ri#LookupNameUnderCursor(1)<CR>
+nnoremap <silent> <Leader>K :call ri#LookupNameUnderCursor(0)<CR>
+
+autocmd FileType ruby nnoremap <buffer> K :call ri#LookupNameUnderCursor()<CR>
+
 " fix grep in OSX
 map <F8> :GrepBuffer<CR><CR>
 map <F9> :Rgrep<CR><CR>
