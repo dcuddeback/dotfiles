@@ -249,10 +249,6 @@ map <F8> :GrepBuffer<CR><CR>
 map <F9> :Rgrep<CR><CR>
 let Grep_Find_Use_Xargs = 0
 
-" quickfix
-nmap ,en  :cnext<CR>
-nmap ,eN  :cprevious<CR>
-
 " tabs
 noremap <C-PageUp>   :tabprev<CR>
 noremap <C-PageDown> :tabnext<CR>
