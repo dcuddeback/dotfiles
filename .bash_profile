@@ -39,6 +39,11 @@ then
   alias pbpaste='xsel --clipboard --output'
 fi
 
+# It's like grep for oneliners. Thanks to morsch from HN.
+cmdfu() {
+  wget -qO - "http://www.commandlinefu.com/commands/matching/$@/$(echo -n "$@" | openssl base64)/plaintext"
+}
+
 # JAVA_HOME for OSX
 if [ -d /System/Library/Frameworks/JavaVM.framework/Home/ ]; then
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
