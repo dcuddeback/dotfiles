@@ -109,14 +109,127 @@ imap <PageDown> <C-O><C-D>
 nmap <ESC>[5^ <C-PageUp>
 nmap <ESC>[6^ <C-PageDown>
 
+
+" Save the last source buffer so that we can return to it after switching to helper windows, such as
+" NERDTree or Tagbar.
+
+" Returns true if the current buffer is a source file.
+function! g:IsSourceBuffer()
+  return !(winnr() == g:NERDTreeWindow() || winnr() == g:TagbarWindow())
+endfunction
+
+" Saves the current source buffer so that it can be restored by g:RestoreLastSourceBuffer().
+function! g:SaveLastSourceBuffer()
+  if g:IsSourceBuffer()
+    let t:LastSourceBuffer = bufnr('%')
+  endif
+endfunction
+
+" Returns to the last source file that was being edited.
+function! g:RestoreLastSourceBuffer()
+  if exists('t:LastSourceBuffer')
+    execute bufwinnr(t:LastSourceBuffer) . 'wincmd w'
+  else
+    execute 'wincmd p'
+  endif
+endfunction
+
+
 " NERDTree
-map <F2> :NERDTreeToggle<CR>
 let NERDTreeChDirMode = 2         " keep working directory set to NERD's root node
 let NERDTreeWinPos    = "left"
 let NERDTreeWinSize   = 35
 
-" tagbar
-map <F3> :TagbarToggle<CR>
+function! g:NERDTreeWindow()
+  if exists('t:NERDTreeBufName')
+    return bufwinnr(t:NERDTreeBufName)
+  else
+    return -1
+  endif
+endfunction
+
+function! g:OpenNERDTreeWithSaveSourceBuffer()
+  call g:SaveLastSourceBuffer()
+
+  if g:NERDTreeWindow() < 0
+    NERDTreeToggle
+  else
+    execute g:NERDTreeWindow() . 'wincmd w'
+  endif
+endfunction
+
+" Alternates between the NERDTree window and a source window.
+function! g:AlternateNERDTreeAndBuffer()
+  if winnr() == g:NERDTreeWindow()
+    call g:RestoreLastSourceBuffer()
+  else
+    call g:OpenNERDTreeWithSaveSourceBuffer()
+  endif
+endfunction
+
+" Focuses the NERDTree window on the current file
+function! g:NERDTreeFocusCurrentBuffer()
+  if g:NERDTreeWindow() < 0
+    call g:OpenNERDTreeWithSaveSourceBuffer()
+  endif
+
+  if !g:IsSourceBuffer()
+    call g:RestoreLastSourceBuffer()
+  endif
+
+  NERDTreeFind
+endfunction
+
+noremap  <silent> <F2>      :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>f :call g:AlternateNERDTreeAndBuffer()<CR>
+nnoremap <silent> <Leader>F :call g:NERDTreeFocusCurrentBuffer()<CR>
+
+
+" Tagbar
+let g:tagbar_left        = 0
+let g:tagbar_width       = 40
+let g:tagbar_autofocus   = 1
+let g:tagbar_autoclose   = 0
+let g:tagbar_sort        = 1
+let g:tagbar_compact     = 0
+let g:tagbar_expand      = 0
+let g:tagbar_singleclick = 1
+let g:tagbar_foldlevel   = 4
+let g:tagbar_iconchars   = ['▶', '▼']
+let g:tagbar_autoshowtag = 1
+
+let g:tagbar_type_coffee = {
+      \ 'ctagstype' : 'coffee',
+      \ 'kinds' : [
+      \   'f:functions',
+      \   'v:variables'
+      \ ],
+      \ }
+
+function! g:TagbarWindow()
+  return bufwinnr('__Tagbar__')
+endfunction
+
+function! g:OpenTagbarWithSaveSourceBuffer()
+  call g:SaveLastSourceBuffer()
+  call tagbar#OpenWindow('fj')
+endfunction
+
+function! g:AlternateTagbarAndBuffer()
+  if winnr() == g:TagbarWindow()
+    call g:RestoreLastSourceBuffer()
+  else
+    call g:OpenTagbarWithSaveSourceBuffer()
+  endif
+endfunction
+
+noremap  <silent> <F3>      :TagbarToggle<CR>
+nnoremap <silent> <Leader>g :call g:AlternateTagbarAndBuffer()<CR>
+
+"autocmd VimEnter * nested :call tagbar#autoopen(1)
+"autocmd FileType * nested :call tagbar#autoopen(0)
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
+
 
 " ctags
 set tags=./tags;/
