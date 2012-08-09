@@ -10,8 +10,9 @@
   ui = auto
 
 [status]
-  relativePaths     = true
-  submodulesummary  = true
+  relativePaths      = true
+  submodulesummary   = true
+  showUntrackedFiles = all
 
 [push]
   default = upstream
