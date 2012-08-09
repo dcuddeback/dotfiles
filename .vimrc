@@ -233,8 +233,8 @@ nnoremap <silent> <Leader>g :call g:AlternateTagbarAndBuffer()<CR>
 
 " ctags
 set tags=./tags;/
-map <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
-map <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
+map <silent> <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
+map <silent> <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ri.vim
 nnoremap <silent> <Leader>r :call ri#OpenSearchPrompt(1)<CR>
@@ -250,8 +250,8 @@ map <F9> :Rgrep<CR><CR>
 let Grep_Find_Use_Xargs = 0
 
 " tabs
-noremap <C-PageUp>   :tabprev<CR>
-noremap <C-PageDown> :tabnext<CR>
+nnoremap <silent> <C-PageUp>   :tabprev<CR>
+nnoremap <silent> <C-PageDown> :tabnext<CR>
 
 " copy/cut/paste
 vnoremap <C-X> "+x
