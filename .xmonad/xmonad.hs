@@ -85,13 +85,14 @@ myManageHook =  composeAll . concat $
     [[isFullscreen                  --> doFullFloat
     , className =? "Xmessage"       --> doCenterFloat
     , className =? "Pidgin"         --> doShift "8:chat"
+    , className =? "Empathy"        --> doShift "8:chat"
     , className =? "Skype"          --> doShift "8:chat"
     , className =? "Mail"           --> doShift "7:mail"
     , className =? "Thunderbird"    --> doShift "7:mail"
     , className =? "Xfce4-notifyd"  --> doIgnore
     ]]
 
-myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ standardLayouts
+myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWorkspace "9:misc" gimpLayout $ standardLayouts
   where
     standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 
@@ -103,15 +104,26 @@ myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ stand
     fullL         = avoidStruts $ full
 
     --Im Layout
-    imLayout      = avoidStruts $ smartBorders $ withIM ratio pidginRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid)
+    imLayout      = avoidStruts $ smartBorders $ withIM pidginRatio pidginRoster $ withIM empathyRatio empathyRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid)
       where
         chatLayout    = Grid
-        ratio         = (1%9)
+        pidginRatio   = (1%9)
+        empathyRatio  = (1%8)
         skypeRatio    = (1%8)
         pidginRoster  = And (ClassName "Pidgin") (Role "buddy_list")
+        empathyRoster = And (ClassName "Empathy") (Role "contact_list")
         skypeRoster   = (ClassName "Skype") `And`
                         (Role "")           `And`
                         (Not (Title "Options"))
+
+    -- Gimp Layout
+    gimpLayout    = avoidStruts $ smartBorders $ withIM toolboxRatio gimpToolbox $ reflectHoriz $ withIM dockRatio gimpDock imageLayout
+      where
+        imageLayout   = (tiled ||| reflectTiled ||| Grid ||| Full)
+        toolboxRatio  = (1%9)
+        dockRatio     = (1%8)
+        gimpToolbox   = (Role "gimp-toolbox")
+        gimpDock      = (Role "gimp-dock")
 
 -------------------------------------------------------------------------------
 ---- Terminal --
@@ -134,8 +146,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- opening program launcher
     , ((modMask , xK_p), shellPrompt myXPConfig)
 
+    -- screen saver commands
+    , ((modMask .|. shiftMask , xK_Escape), spawn "xscreensaver-command -lock")
+
     -- start a pomodoro
-    , ((modMask , xK_n), spawn "touch ~/.pomodoro_session")
+    , ((modMask .|. shiftMask , xK_n), spawn "touch ~/.pomodoro_session")
 
     -- layouts
     , ((modMask, xK_space ), sendMessage NextLayout)
@@ -175,7 +190,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-[1..9] %! Switch to workspace N
     -- mod-shift-[1..9] %! Move client to workspace N
     [((m .|. modMask, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
     ++
