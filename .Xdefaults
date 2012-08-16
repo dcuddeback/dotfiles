@@ -28,10 +28,11 @@ URxvt*boldFont:         -*-terminus-bold-r-*-*-14-*-*-*-*-*-*-u
 URxvt*italicFont:       -*-terminus-medium-o-*-*-14-*-*-*-*-*-*-u
 URxvt*boldItalicFont:   -*-terminus-bold-o-*-*-14-*-*-*-*-*-*-u
 
-! URL handling
-!URxvt*perl-ext-common:  default,matcher,url-select
-URxvt*perl-ext-common:  default,matcher
-URxvt*urlLauncher:      chromium-browser
-URxvt*matcher.button:   1
-URxvt*underlineURLs:    true
-!URxvt*keysum.M-u:       perl:url-select:select_next
+! extensions
+URxvt*perl-ext:
+URxvt*perl-ext-common:
+!URxvt*perl-ext-common:  default,url-select
+!URxvt*urlLauncher:      chromium-browser
+!URxvt*matcher.button:   1
+!URxvt*underlineURLs:    false
+!URxvt*keysym.M-u:       perl:url-select:select_next
