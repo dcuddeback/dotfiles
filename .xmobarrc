@@ -15,5 +15,5 @@ Config
     ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = " %StdinReader% }{ %pomodoro% <fc=#429942>|</fc> %KSFO% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %eth0% <fc=#429942>|</fc> %date%"
+  , template = " %StdinReader% } %date% { %eth0% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %KSFO%"
   }
