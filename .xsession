@@ -5,6 +5,7 @@ hsetroot -center ~/Wallpapers/current &
 # background services
 xscreensaver -no-splash &
 dropbox start &
+wineserver &
 
 # default applications
 pidgin &
