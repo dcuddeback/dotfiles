@@ -55,12 +55,20 @@ if [ -d /usr/lib/jvm/java-6-openjdk/ ]; then
   export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
 fi
 
+# Node.js version manager
+if [ -f ~/nvm/nvm.sh ]; then
+  . ~/nvm/nvm.sh
+fi
+
+# Ruby env
+if command -v rbenv > /dev/null 2>&1 ; then
+  eval "$(rbenv init -)"
+fi
+
 # load settings specific to the local machine
 if [ -f ~/.bash_local ]; then
   . ~/.bash_local
 fi
-
-eval "$(rbenv init -)"
 
 # Use Bundler's --binstubs
 export PATH=./bin:$PATH
