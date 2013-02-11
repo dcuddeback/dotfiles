@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-hsetroot -center ~/Wallpapers/1920x1200/02266_itswood_1920x1200.jpg &
+hsetroot -center ~/Wallpapers/current &
 
 # background services
 xscreensaver -no-splash &
