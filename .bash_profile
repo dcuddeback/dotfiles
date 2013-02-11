@@ -27,6 +27,7 @@ export EDITOR=vim
 export GEMEDITOR=mvim
 export PAGER=less
 
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias irc='screen -d -RR -S irc weechat-curses && clear'
 alias can-haz='sudo apt-get install'
