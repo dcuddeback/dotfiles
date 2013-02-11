@@ -12,6 +12,7 @@ stalonetray --geometry 100x1+0-0 --skip-taskbar --sticky --window-strut bottom -
 pidgin &
 skype &
 thunderbird &
+workrave &
 
 eval "$(gnome-keyring-daemon)"
 exec xmonad
