@@ -11,7 +11,6 @@ stalonetray --geometry 100x1+0-0 --skip-taskbar --sticky --window-strut bottom -
 # default applications
 pidgin &
 skype &
-thunderbird &
 workrave &
 
 exec ssh-agent xmonad
