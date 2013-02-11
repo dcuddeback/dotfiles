@@ -6,6 +6,7 @@ hsetroot -center ~/Wallpapers/current &
 xscreensaver -no-splash &
 dropbox start &
 wineserver &
+stalonetray --geometry 100x1+0-0 --skip-taskbar --sticky --window-strut bottom --transparent --tint-color black --tint-level 180 &
 
 # default applications
 pidgin &
