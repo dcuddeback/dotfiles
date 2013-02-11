@@ -90,6 +90,7 @@ myManageHook =  composeAll . concat $
     , className =? "Mail"           --> doShift "7:mail"
     , className =? "Thunderbird"    --> doShift "7:mail"
     , className =? "Xfce4-notifyd"  --> doIgnore
+    , className =? "stalonetray"    --> doIgnore
     ]]
 
 myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWorkspace "9:misc" gimpLayout $ standardLayouts
