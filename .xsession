@@ -14,5 +14,4 @@ skype &
 thunderbird &
 workrave &
 
-eval "$(gnome-keyring-daemon)"
-exec xmonad
+exec ssh-agent xmonad
