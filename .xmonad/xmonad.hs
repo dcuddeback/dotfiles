@@ -115,7 +115,8 @@ myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWor
         empathyRoster = And (ClassName "Empathy") (Role "contact_list")
         skypeRoster   = (ClassName "Skype") `And`
                         (Role "")           `And`
-                        (Not (Title "Options"))
+                        (Not (Title "Options")) `And`
+                        (Not (Title "Terms of Use"))
 
     -- Gimp Layout
     gimpLayout    = avoidStruts $ smartBorders $ withIM toolboxRatio gimpToolbox $ reflectHoriz $ withIM dockRatio gimpDock imageLayout
