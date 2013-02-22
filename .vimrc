@@ -20,6 +20,7 @@ call pathogen#infect()
 
 behave xterm
 syntax on
+syntax sync fromstart
 colorscheme jellybeans
 filetype plugin indent on
 
