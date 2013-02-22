@@ -8,9 +8,18 @@ PATH=$PATH:/opt/local/lib/mysql5/bin        # mysql
 PATH=~/.rbenv/bin:$PATH                     # rbenv
 
 # Android SDK tools
-if [ -d $HOME/android-sdk-mac_x86/tools ]; then
-  PATH=$PATH:$HOME/android-sdk-mac_x86/tools
+if [ -d $HOME/android-sdk-linux/ ]
+then
+  PATH=$PATH:$HOME/android-sdk-linux/tools
+  PATH=$PATH:$HOME/android-sdk-linux/platform-tools
 fi
+
+if [ -d $HOME/android-sdk-mac_x86/ ]
+then
+  PATH=$PATH:$HOME/android-sdk-mac_x86/tools
+  PATH=$PATH:$HOME/android-sdk-mac_x86/platform-tools
+fi
+
 
 PATH=$HOME/bin:$PATH                        # custom scripts
 
