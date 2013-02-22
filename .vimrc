@@ -247,6 +247,7 @@ autocmd FileType ruby nnoremap <buffer> K :call ri#LookupNameUnderCursor()<CR>
 
 " configure haskellmode-vim
 let g:haddock_browser="/usr/bin/chromium-browser"
+let $PATH = $PATH . ':' . expand("~/.cabal/bin")
 
 " fix grep in OSX
 map <F8> :GrepBuffer<CR><CR>
