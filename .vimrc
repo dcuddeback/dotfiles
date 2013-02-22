@@ -245,6 +245,9 @@ nnoremap <silent> <Leader>K :call ri#LookupNameUnderCursor(0)<CR>
 
 autocmd FileType ruby nnoremap <buffer> K :call ri#LookupNameUnderCursor()<CR>
 
+" configure haskellmode-vim
+let g:haddock_browser="/usr/bin/chromium-browser"
+
 " fix grep in OSX
 map <F8> :GrepBuffer<CR><CR>
 map <F9> :Rgrep<CR><CR>
