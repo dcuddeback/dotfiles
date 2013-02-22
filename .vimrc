@@ -268,3 +268,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " treat hamlc as haml
 autocmd BufRead,BufNewFile *.hamlc set filetype=haml
+
+
+" debug syntax highlighting
+map <Leader>sn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
