@@ -237,6 +237,14 @@ set tags=./tags;/
 map <silent> <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
 map <silent> <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" VimClojure
+let vimclojure#FuzzyIndent=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#HighlightContrib=1
+let vimclojure#DynamicHighlight=1
+let vimclojure#ParenRainbow=1
+let vimclojure#WantNailgun=1
+
 " ri.vim
 nnoremap <silent> <Leader>r :call ri#OpenSearchPrompt(1)<CR>
 nnoremap <silent> <Leader>R :call ri#OpenSearchPrompt(0)<CR>
