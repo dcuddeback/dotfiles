@@ -186,6 +186,12 @@ noremap  <silent> <F2>      :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>f :call g:AlternateNERDTreeAndBuffer()<CR>
 nnoremap <silent> <Leader>F :call g:NERDTreeFocusCurrentBuffer()<CR>
 
+" open NERDTree if vim is launched without opening a file
+autocmd VimEnter * if !argc() | NERDTree | endif
+
+" quit vim if NERDTree is the only window left open
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 
 " Tagbar
 let g:tagbar_left        = 0
