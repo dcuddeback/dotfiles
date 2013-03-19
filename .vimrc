@@ -33,6 +33,7 @@ set foldlevel=3
 set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
 set mouse=a               " enable mouse in all modes
+set updatetime=100        " delay (ms) before CursorHold event
 
 " indentation preferences
 set smarttab
