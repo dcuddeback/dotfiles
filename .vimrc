@@ -234,9 +234,9 @@ endfunction
 noremap  <silent> <F3>      :TagbarToggle<CR>
 nnoremap <silent> <Leader>g :call g:AlternateTagbarAndBuffer()<CR>
 
-"autocmd VimEnter * nested :call tagbar#autoopen(1)
-"autocmd FileType * nested :call tagbar#autoopen(0)
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+autocmd FileType * nested :call tagbar#autoopen(0)
+autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 
 " ctags
