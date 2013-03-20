@@ -245,6 +245,7 @@ map <silent> <C-\>   :vsplit    <CR>:exec("tag ".expand("<cword>"))<CR>
 map <silent> <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " VimClojure
+let vimclojure#SplitPos = "bottom"
 let vimclojure#FuzzyIndent=1
 let vimclojure#HighlightBuiltins=1
 let vimclojure#HighlightContrib=1
