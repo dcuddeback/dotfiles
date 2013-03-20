@@ -7,6 +7,7 @@ PATH=$PATH:/opt/local/lib/postgresql90/bin  # postgresql90
 PATH=$PATH:/opt/local/lib/mysql5/bin        # mysql
 PATH=~/.rbenv/bin:$PATH                     # rbenv
 PATH=/usr/local/bin:$PATH                   # homebrew
+PATH=$HOME/local/bin:$PATH                  # local installations
 
 # Android SDK tools
 if [ -d $HOME/android-sdk-linux/ ]
