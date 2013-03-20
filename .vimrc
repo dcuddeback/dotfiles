@@ -248,7 +248,7 @@ map <silent> <C-S-\> :tab split <CR>:exec("tag ".expand("<cword>"))<CR>
 let vimclojure#FuzzyIndent=1
 let vimclojure#HighlightBuiltins=1
 let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlight=1
+let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun=1
 
