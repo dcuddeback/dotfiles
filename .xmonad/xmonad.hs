@@ -24,12 +24,14 @@ import XMonad.Layout.IM
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace (onWorkspace)
 
+import XMonad.Actions.PhysicalScreens
+
 -- for IM layout
 import Data.Ratio ((%))
 import Data.List (isInfixOf)
 
 main = do
-  xmproc <- spawnPipe "xmobar --screen 1"
+  xmproc <- spawnPipe "xmobar"
   xmonad $ ewmh $ defaultConfig
     { borderWidth       = 1
     , focusFollowsMouse = False
@@ -196,9 +198,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
     ++
-    -- mod-[w,e]        %! switch to twinview screen 1/2
-    -- mod-shift-[w,e]  %! move window to screen 1/2
-    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
+    -- mod-{w,e}, Switch to physical/Xinerama screens 1, 2
+    -- mod-shift-{w,e}, Move client to screen 1,2
+    [((modMask .|. mask, key), f sc)
+      | (key, sc) <- zip [xK_w, xK_e] [0..]
+      , (f, mask) <- [(viewScreen, 0), (sendToScreen, shiftMask)]]
