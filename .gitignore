@@ -6,3 +6,4 @@
 
 # ignore patterns specific to dotfiles
 .gnupg/random_seed
+.lein/repl-history
