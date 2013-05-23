@@ -1,2 +1,8 @@
+# general ignore patterns for all projects (including dotfiles)
 *.swp
 *.jar
+*.gpg
+*~
+
+# ignore patterns specific to dotfiles
+.gnupg/random_seed
