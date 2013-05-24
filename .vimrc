@@ -34,6 +34,7 @@ set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
 set mouse=a               " enable mouse in all modes
 set updatetime=100        " delay (ms) before CursorHold event
+set dir=/tmp              " write swap files to /tmp
 
 " indentation preferences
 set smarttab
