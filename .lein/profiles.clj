@@ -7,4 +7,5 @@
                   [lein-autoreload "0.1.0"]
                   [lein-tarsier "0.10.0"]]
         :dependencies [[midje-progress-emitter "0.1.0"]]
-        :vimclojure-opts {:repl true}}}
+        :vimclojure-opts {:repl true}}
+ :lint {:global-vars {*warn-on-reflection* true}}}
