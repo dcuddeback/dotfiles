@@ -8,3 +8,4 @@
 .gnupg/random_seed
 .lein/repl-history
 .lein/indices
+.lein/cache/
