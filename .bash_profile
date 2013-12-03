@@ -10,6 +10,11 @@ if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
 
+# bash completion from Homebrew
+if [ -d /usr/local/etc/bash_completion.d ]; then
+  source /usr/local/etc/bash_completion.d/*
+fi
+
 RED='\[\033[1;31m\]'
 GREEN='\[\033[1;32m\]'
 YELLOW='\[\033[1;33m\]'
