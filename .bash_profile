@@ -81,3 +81,8 @@ fi
 
 # Use Bundler's --binstubs
 export PATH=./bin:$PATH
+
+# Make use of keychain (if installed) to manage ssh-agent and gpg-agent
+if command -v keychain > /dev/null 2>&1 ; then
+  eval `keychain --eval --clear`
+fi
