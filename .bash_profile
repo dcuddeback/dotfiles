@@ -15,6 +15,11 @@ if [ -d /usr/local/etc/bash_completion.d ]; then
   source /usr/local/etc/bash_completion.d/*
 fi
 
+# bash completion for SSH
+if [ $(uname) == "Darwin" ]; then
+  complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
+fi
+
 RED='\[\033[1;31m\]'
 GREEN='\[\033[1;32m\]'
 YELLOW='\[\033[1;33m\]'
