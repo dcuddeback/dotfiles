@@ -89,7 +89,7 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-" disable those dame arrow keys
+" disable those damn arrow keys
 nnoremap <up>    <nop>
 nnoremap <down>  <nop>
 nnoremap <left>  <nop>
@@ -263,12 +263,6 @@ let vimclojure#WantNailgun=1
 "au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
-
-" ri.vim
-nnoremap <silent> <Leader>r :call ri#OpenSearchPrompt(1)<CR>
-nnoremap <silent> <Leader>R :call ri#OpenSearchPrompt(0)<CR>
-nnoremap <silent> <Leader>k :call ri#LookupNameUnderCursor(1)<CR>
-nnoremap <silent> <Leader>K :call ri#LookupNameUnderCursor(0)<CR>
 
 autocmd FileType ruby nnoremap <buffer> K :call ri#LookupNameUnderCursor()<CR>
 
