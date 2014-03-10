@@ -9,6 +9,12 @@ PATH=~/.rbenv/bin:$PATH                     # rbenv
 PATH=/usr/local/bin:$PATH                   # homebrew
 PATH=$HOME/local/bin:$PATH                  # local installations
 
+# Go
+if [ -d /usr/local/Cellar/go/1.2/libexec/bin ]
+then
+  PATH=$PATH:/usr/local/Cellar/go/1.2/libexec/bin
+fi
+
 # Android SDK tools
 if [ -d $HOME/android-sdk-linux/ ]
 then
