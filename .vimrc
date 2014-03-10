@@ -294,6 +294,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 " treat hamlc as haml
 autocmd BufRead,BufNewFile *.hamlc set filetype=haml
 
+" use Dispatch and Zeus with vim-rspec
+let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+nnoremap <silent> <Leader>r :call RunCurrentSpecFile()<CR>
+nnoremap <silent> <Leader>R :call RunNearestSpec()<CR>
+nnoremap <silent> <Leader>s :call RunLastSpec()<CR>
 
 " debug syntax highlighting
 map <Leader>sn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
