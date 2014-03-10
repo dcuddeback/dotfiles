@@ -3,6 +3,7 @@
 *.jar
 *.gpg
 *~
+tags
 
 # ignore patterns specific to dotfiles
 .gnupg/random_seed
