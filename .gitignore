@@ -4,6 +4,7 @@
 *.gpg
 *~
 tags
+.DS_Store
 
 # ignore patterns specific to dotfiles
 .gnupg/random_seed
