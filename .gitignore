@@ -12,3 +12,4 @@ tags
 .lein/indices
 .lein/cache/
 .lein/credentials.clj
+.vim/view
