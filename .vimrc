@@ -142,6 +142,7 @@ endfunction
 let NERDTreeChDirMode = 2         " keep working directory set to NERD's root node
 let NERDTreeWinPos    = "left"
 let NERDTreeWinSize   = 35
+let NERDTreeIgnore    = ['\~$', '\.o$', '\.lo$', '\.la$', '\.log$', '^stamp-h1$', '^test-suite.log$', '_unittest']
 
 function! g:NERDTreeWindow()
   if exists('t:NERDTreeBufName')
