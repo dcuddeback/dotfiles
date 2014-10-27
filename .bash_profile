@@ -12,15 +12,17 @@ fi
 
 # bash completion from Homebrew
 if [ -d /usr/local/etc/bash_completion.d ]; then
-  source /usr/local/etc/bash_completion.d/git-completion.bash
-  source /usr/local/etc/bash_completion.d/git-flow-completion.bash
-  source /usr/local/etc/bash_completion.d/git-prompt.sh
-  source /usr/local/etc/bash_completion.d/go-completion.bash
+  if [ -f /usr/local/etc/bash_completion.d/git-completion.bash      ]; then source /usr/local/etc/bash_completion.d/git-completion.bash;      fi
+  if [ -f /usr/local/etc/bash_completion.d/git-flow-completion.bash ]; then source /usr/local/etc/bash_completion.d/git-flow-completion.bash; fi
+  if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh            ]; then source /usr/local/etc/bash_completion.d/git-prompt.sh;            fi
+  if [ -f /usr/local/etc/bash_completion.d/go-completion.bash       ]; then source /usr/local/etc/bash_completion.d/go-completion.bash;       fi
 fi
 
 # bash completion for SSH
 if [ $(uname) == "Darwin" ]; then
-  complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
+  if [ -f $HOME/.ssh/config ]; then
+    complete -o default -o nospace -W "$(/usr/bin/env ruby -ne 'puts $_.split(/[,\s]+/)[1..-1].reject{|host| host.match(/\*|\?/)} if $_.match(/^\s*Host\s+/);' < $HOME/.ssh/config)" scp sftp ssh
+  fi
 fi
 
 RED='\[\033[1;31m\]'
