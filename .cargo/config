@@ -1,0 +1,4 @@
+[cargo-new]
+name = "David Cuddeback"
+email = "david.cuddeback@gmail.com"
+vcs = "git"
