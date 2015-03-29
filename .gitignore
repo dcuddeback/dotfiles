@@ -1,4 +1,5 @@
 # general ignore patterns for all projects (including dotfiles)
+*.o
 *.swp
 *.jar
 *.gpg
