@@ -195,6 +195,10 @@ autocmd VimEnter * if !argc() | NERDTree | endif
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
+" NERDCommenter
+let g:NERDCustomDelimiters = { 'toml': { 'left': '#' } }
+
+
 " Tagbar
 let g:tagbar_left        = 0
 let g:tagbar_width       = 40
