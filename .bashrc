@@ -28,6 +28,10 @@ then
   PATH=$PATH:$HOME/android-sdk-mac_x86/platform-tools
 fi
 
+# Raspberry Pi cross-compiler
+if [ -d $HOME/x-tools/armv6-rpi-linux-gnueabi/bin ]; then
+  PATH=$PATH:$HOME/x-tools/armv6-rpi-linux-gnueabi/bin
+fi
 
 PATH=$HOME/bin:$PATH                        # custom scripts
 
