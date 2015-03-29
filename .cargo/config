@@ -1,4 +1,12 @@
+# vim: filetype=toml
+
 [cargo-new]
 name = "David Cuddeback"
 email = "david.cuddeback@gmail.com"
 vcs = "git"
+
+[target.arm-unknown-linux-gnueabi]
+linker = "arm-linux-gnueabi-gcc"
+
+[target.arm-unknown-linux-gnueabihf]
+linker = "arm-linux-gnueabihf-gcc"
