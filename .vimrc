@@ -12,7 +12,7 @@ filetype plugin indent on
 set wildmenu              " show matches on tab-completion
 set incsearch             " show matches while typing search string
 set noshowmatch           " don't jump to matching bracket after typing closing bracket
-set foldmethod=marker     " avoid slowness of foldmethod=syntax
+set foldmethod=syntax     " fold code based on syntax
 set foldlevel=3
 set nostartofline         " keep cursor in same column during motion commands
 set modeline              " read modelines
@@ -244,14 +244,6 @@ let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun=1
 
-" rainbow_parentheses
-"let g:rbpt_max = 16
-"let g:rbpt_loadcmd_toggle = 0
-
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
 
 autocmd FileType ruby nnoremap <buffer> K :call ri#LookupNameUnderCursor()<CR>
 
