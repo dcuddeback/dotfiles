@@ -1,1 +1,1 @@
-set foldlevel=0
+setlocal foldlevel=0

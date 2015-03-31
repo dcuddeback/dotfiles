@@ -1,9 +1,9 @@
-set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:.
-set noexpandtab
-set tabstop=4
-set shiftwidth=4
-set foldmethod=syntax
-set foldlevel=0
+setlocal listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:.
+setlocal noexpandtab
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal foldmethod=syntax
+setlocal foldlevel=0
 
 " Requires goimports [https://godoc.org/code.google.com/p/go.tools/cmd/goimports]
 "   go get code.google.com/p/go.tools/cmd/goimports
