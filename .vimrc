@@ -20,6 +20,9 @@ set mouse=a               " enable mouse in all modes
 set updatetime=100        " delay (ms) before CursorHold event
 set dir=/tmp              " write swap files to /tmp
 
+set foldtext=getline(v:foldstart)
+set fillchars="vert:|"
+
 " indentation preferences
 set smarttab
 set expandtab
