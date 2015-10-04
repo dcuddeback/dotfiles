@@ -126,10 +126,11 @@ endfunction
 
 
 " NERDTree
-let NERDTreeChDirMode = 2         " keep working directory set to NERD's root node
-let NERDTreeWinPos    = "left"
-let NERDTreeWinSize   = 35
-let NERDTreeIgnore    = ['\~$', '\.o$', '\.lo$', '\.la$', '\.log$', '^stamp-h1$', '^test-suite.log$', '_unittest']
+let NERDTreeChDirMode  = 2        " keep working directory set to NERD's root node
+let NERDTreeWinPos     = "left"
+let NERDTreeWinSize    = 35
+let NERDTreeQuitOnOpen = 1
+let NERDTreeIgnore     = ['\~$', '\.o$', '\.lo$', '\.la$', '\.log$', '^stamp-h1$', '^test-suite.log$', '_unittest']
 
 function! g:NERDTreeWindow()
   if exists('t:NERDTreeBufName')
@@ -190,14 +191,14 @@ let g:NERDCustomDelimiters = { 'toml': { 'left': '#' } }
 let g:tagbar_left        = 0
 let g:tagbar_width       = 40
 let g:tagbar_autofocus   = 1
-let g:tagbar_autoclose   = 0
+let g:tagbar_autoclose   = 1
 let g:tagbar_sort        = 1
 let g:tagbar_compact     = 0
 let g:tagbar_expand      = 0
 let g:tagbar_singleclick = 1
 let g:tagbar_foldlevel   = 4
 let g:tagbar_iconchars   = ['▶', '▼']
-let g:tagbar_autoshowtag = 1
+let g:tagbar_autoshowtag = 0
 
 let g:tagbar_type_coffee = {
       \ 'ctagstype' : 'coffee',
@@ -224,12 +225,8 @@ function! g:AlternateTagbarAndBuffer()
   endif
 endfunction
 
-noremap  <silent> <F3>      :TagbarToggle<CR>
+noremap <silent> <F3> :TagbarToggle<CR>
 nnoremap <silent> <Leader>g :call g:AlternateTagbarAndBuffer()<CR>
-
-autocmd VimEnter * nested :call tagbar#autoopen(1)
-autocmd FileType * nested :call tagbar#autoopen(0)
-autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 
 " ctags
