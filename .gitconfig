@@ -36,6 +36,7 @@
 [alias]
   summary = log --pretty=oneline
   active  = branch --contains 'HEAD@{2 weeks ago}'
+  history = log --first-parent --pretty=oneline --abbrev-commit --decorate --color
   tree    = log --graph --pretty=oneline --abbrev-commit --decorate --color
   forest  = log --graph --pretty=oneline --abbrev-commit --decorate --color --all
   recent  = log --graph --pretty=oneline --abbrev-commit --decorate --color -10
