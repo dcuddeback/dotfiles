@@ -14,3 +14,4 @@ tags
 .lein/cache/
 .lein/credentials.clj
 .vim/view
+.cargo/registry
