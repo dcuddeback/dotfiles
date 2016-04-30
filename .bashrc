@@ -27,6 +27,9 @@ __prepend_path "$HOME/local/bin"
 # rbenv
 __prepend_path "$HOME/.rbenv/bin"
 
+# Rust/Cargo
+__prepend_path "$HOME/.cargo/bin"
+
 # cross-compilers
 if [ -d $HOME/x-tools ]; then
   for dir in $(find $HOME/x-tools/ -mindepth 2 -maxdepth 2 -type d -name bin); do

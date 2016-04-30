@@ -15,3 +15,5 @@ tags
 .lein/credentials.clj
 .vim/view
 .cargo/registry
+.cargo/bin/
+.cargo/env
