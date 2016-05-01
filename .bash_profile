@@ -1,10 +1,12 @@
 source ~/.bashrc
 
 # bash completion from Homebrew
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash      ]; then source /usr/local/etc/bash_completion.d/git-completion.bash;      fi
-if [ -f /usr/local/etc/bash_completion.d/git-flow-completion.bash ]; then source /usr/local/etc/bash_completion.d/git-flow-completion.bash; fi
-if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh            ]; then source /usr/local/etc/bash_completion.d/git-prompt.sh;            fi
-if [ -f /usr/local/etc/bash_completion.d/go-completion.bash       ]; then source /usr/local/etc/bash_completion.d/go-completion.bash;       fi
+if [ -d "/usr/local/etc/bash_completion.d" ]; then
+  if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash"      ]; then source "/usr/local/etc/bash_completion.d/git-completion.bash";      fi
+  if [ -f "/usr/local/etc/bash_completion.d/git-flow-completion.bash" ]; then source "/usr/local/etc/bash_completion.d/git-flow-completion.bash"; fi
+  if [ -f "/usr/local/etc/bash_completion.d/git-prompt.sh"            ]; then source "/usr/local/etc/bash_completion.d/git-prompt.sh";            fi
+  if [ -f "/usr/local/etc/bash_completion.d/cargo"                    ]; then source "/usr/local/etc/bash_completion.d/cargo";                    fi
+fi
 
 # bash completion for SSH
 if [ $(uname) == "Darwin" ]; then
