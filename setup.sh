@@ -2,7 +2,8 @@
 
 # backup system .bashrc
 if [ -f "$HOME/.bashrc" -a \! -L "$HOME/.bashrc" ]; then
-  mv -v "$HOME/.bashrc" "$HOME/.bashrc_default"
+  echo "move: $HOME/.bashrc -> $HOME/.bashrc_default"
+  mv "$HOME/.bashrc" "$HOME/.bashrc_default"
 fi
 
 # link dotfiles (skip .git directory and setup.sh; handle .cargo/config separately)
@@ -12,7 +13,8 @@ for file in $(ls -A "$HOME/dotfiles/"); do
   fi
 
   if [ \! -e "$HOME/$file" ]; then
-    ln -sv "$HOME/dotfiles/$file" $HOME
+    echo "link: $HOME/$file -> $HOME/dotfiles/$file"
+    ln -s "$HOME/dotfiles/$file" $HOME
   fi
 done
 
@@ -21,5 +23,6 @@ if [ \! -L "$HOME/.cargo/config" ]; then
     mkdir "$HOME/.cargo"
   fi
 
-  ln -sv "$HOME/.cargo/config" "$HOME/.cargo/"
+  echo "link: $HOME/.cargo/config -> $HOME/dotfiles/.cargo/config"
+  ln -s "$HOME/.cargo/config" "$HOME/.cargo/"
 fi
