@@ -31,9 +31,6 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export EDITOR=vim
 export PAGER=less
 
-alias grep='grep --color=auto'
-alias irc='screen -d -RR -S irc weechat-curses && clear'
-
 if [ "$(uname)" == "Linux" ]
 then
   alias open='gnome-open'
