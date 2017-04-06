@@ -40,5 +40,10 @@ fi
 # custom scripts
 __prepend_path "$HOME/bin"
 
+# help Cargo find SSL certs on NetBSD
+if [ -f "/etc/ssl/certs/ca-certificates.crt" ]; then
+  export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+fi
+
 export PATH
 export BASHRC=true
