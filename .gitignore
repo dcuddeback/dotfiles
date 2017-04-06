@@ -17,3 +17,5 @@ tags
 .cargo/registry
 .cargo/bin/
 .cargo/env
+*.dSYM
+*.pyc
