@@ -45,5 +45,14 @@ if [ -f "/etc/ssl/certs/ca-certificates.crt" ]; then
   export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
 fi
 
+# asdf
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  source "$HOME/.asdf/asdf.sh"
+
+  if [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
+    source "$HOME/.asdf/completions/asdf.bash"
+  fi
+fi
+
 export PATH
 export BASHRC=true
