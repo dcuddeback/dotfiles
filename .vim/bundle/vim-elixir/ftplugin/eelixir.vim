@@ -1,7 +1,3 @@
-" Vim filetype plugin
-" Language: Embedded Elixir
-" URL:      https://github.com/elixir-lang/vim-elixir
-
 if exists("b:did_ftplugin")
   finish
 endif
@@ -18,7 +14,7 @@ if !exists("g:eelixir_default_subtype")
 endif
 
 if !exists("b:eelixir_subtype")
-  let s:lines = getline(1)."\n".getline(2)."\n".getline(3)."\n".getline(4)."\n".getline(5)."\n".getline("$")
+  let s:lines = join(getline(1, 5) + [getline('$')], "\n")
   let b:eelixir_subtype = matchstr(s:lines,'eelixir_subtype=\zs\w\+')
   if b:eelixir_subtype == ''
     let b:eelixir_subtype = matchstr(&filetype,'^eex\.\zs\w\+')
@@ -82,10 +78,27 @@ if exists("loaded_matchit")
   let b:match_words = s:match_words
 endif
 
+if !exists('b:surround_45')
+  " When using surround `-` (ASCII 45) would provide `<% selection %>`
+  let b:surround_45 = "<% \r %>"
+endif
+if !exists('b:surround_61')
+  " When using surround `=` (ASCII 61) would provide `<%= selection %>`
+  let b:surround_61 = "<%= \r %>"
+endif
+if !exists('b:surround_35')
+  " When using surround `#` (ASCII 35) would provide `<%# selection %>`
+  let b:surround_35 = "<%# \r %>"
+endif
+if !exists('b:surround_5')
+  " When using surround `<C-e>` (ASCII 5 `ENQ`) would provide `<% selection %>\n<% end %>`
+  let b:surround_5 = "<% \r %>\n<% end %>"
+endif
+
 setlocal comments=:<%#
 setlocal commentstring=<%#\ %s\ %>
 
-let b:undo_ftplugin = "setl cms< "
+let b:undo_ftplugin = "setl cms< " .
       \ " | unlet! b:browsefilter b:match_words | " . s:undo_ftplugin
 
 let &cpo = s:save_cpo

@@ -1,29 +1,34 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe "Guard syntax" do
-  it "guard in function" do
-    <<-EOF
-    def fun(a) when is_atom(a) do
-    end
+describe 'Guard syntax' do
+  it 'guard in function' do
+    expect(<<~EOF).to include_elixir_syntax('elixirKernelFunction', 'is_atom')
+    def fun(a) when is_atom(a), do:
     EOF
-      .should include_elixir_syntax('elixirKeyword', 'is_atom')
   end
 
-  it "guard in case" do
-    <<-EOF
-    case
-      a when is_atom(a) -> {:ok, a}
-    end
+  it 'guard in if' do
+    expect(<<~EOF).to include_elixir_syntax('elixirKernelFunction', 'is_atom')
+    if is_atom(:atom), do: true
     EOF
-      .should include_elixir_syntax('elixirKeyword', 'is_atom')
   end
 
-  it "does not highlight outside guards" do
-    <<-EOF
-      if is_atom(a) do
-        {:ok, a}
-      end
+  it 'guard in case' do
+    expect(<<~EOF).to include_elixir_syntax('elixirKernelFunction', 'is_atom')
+    case true do
+      true when is_atom(:atom) -> true
+    end
     EOF
-      .should_not include_elixir_syntax('elixirKeyword', 'is_atom')
+  end
+
+  it 'guard in case (multiline)' do
+    expect(<<~EOF).to include_elixir_syntax('elixirKernelFunction', 'is_atom')
+    case true do
+      true when is_boolean(true) and
+      is_atom(:atom) -> true
+    end
+    EOF
   end
 end

@@ -1,10 +1,9 @@
-" Vim syntax file
-" Language: Embedded Elixir
-" URL:      https://github.com/elixir-lang/vim-elixir
-
 if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 if !exists("main_syntax")
   let main_syntax = 'eelixir'
@@ -64,3 +63,5 @@ if main_syntax == 'eelixir'
   unlet main_syntax
 endif
 
+let &cpo = s:cpo_save
+unlet s:cpo_save

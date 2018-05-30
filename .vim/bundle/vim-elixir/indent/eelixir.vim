@@ -1,8 +1,3 @@
-" Vim indent file
-" Language: Embedded Elixir
-" URL:      https://github.com/elixir-lang/vim-elixir
-
-
 if exists("b:did_indent")
   finish
 endif
@@ -10,6 +5,9 @@ endif
 runtime! indent/elixir.vim
 unlet! b:did_indent
 setlocal indentexpr=
+
+let s:cpo_save = &cpo
+set cpo&vim
 
 if exists("b:eelixir_subtype")
   exe "runtime! indent/".b:eelixir_subtype.".vim"
@@ -56,17 +54,19 @@ function! GetEelixirIndent(...)
   let line = getline(lnum)
   let cline = getline(v:lnum)
   if cline =~# '^\s*<%\s*\%(end\|else\|elsif\|catch\|after\|rescue\)\>.*%>'
-    let ind = ind - &sw
+    let ind -= &sw
   elseif line =~# '\S\s*<%\s*end\s*%>'
-    let ind = ind - &sw
+    let ind -= &sw
   endif
-  if line =~# '<%[=%]\=\s*.*\<do\s*%>'
-    let ind = ind + &sw
-  elseif line =~# '<%\s*\%(else\|elsif\|catch\|after\|rescue\)\>.*%>'
-    let ind = ind + &sw
+  if line =~# '<%[=%]\=\s*.*\(\<do\|->\)\s*%>' ||
+        \ line =~# '<%\s*\%(else\|elsif\|catch\|after\|rescue\)\>.*%>'
+    let ind += &sw
   endif
   if cline =~# '^\s*%>\s*$'
-    let ind = ind - &sw
+    let ind -= &sw
   endif
   return ind
 endfunction
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
