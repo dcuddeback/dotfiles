@@ -1,19 +1,24 @@
+-- vim: set filetype=haskell :
+
 Config
-  { font         = "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u"
-  , bgColor      = "#000000"
-  , fgColor      = "#C9A34E"
-  , position     = Top
-  , lowerOnStart = True
+  { font             = "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u"
+  , bgColor          = "#000000"
+  , fgColor          = "#C9A34E"
+  , position         = Top
+  , lowerOnStart     = True
+  , hideOnStart      = False
+  , allDesktops      = True
+  , overrideRedirect = False
+  , persistent       = True
   , commands =
-    [ Run Weather "KSFO" ["-t","<tempF>F : <skyCondition>","-L","65","-H","85","--high","red","--low","lightblue"] 36000
-    , Run Network "eth0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
+    [ Run Weather "KBJC" ["-t","<tempF>F : <skyCondition>","-L","65","-H","85","--high","red","--low","lightblue"] 18000
+    , Run Network "br0" ["-S", "True", "-L", "10240", "-H", "1048576", "-l", "#C9A34E", "-n", "#429942" ,"-h", "#A36666", "-t", "<dev>: <rx> : <tx>"] 10
     , Run Cpu ["-L","3","-H","50","--normal","#429942","--high","#A36666"] 10
     , Run Memory ["-t","Mem: <usedratio>%"] 10
     , Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
     , Run StdinReader
-    , Run CommandReader "~/.pymodoro/pymodoro.py --pomodoro-sound ~/.pymodoro/rimshot.wav --break-sound ~/.pymodoro/nokiaring.wav" "pomodoro"
     ]
   , sepChar  = "%"
   , alignSep = "}{"
-  , template = " %StdinReader% } %date% { %eth0% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %KSFO%"
+  , template = " %StdinReader% } %date% { %br0% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %KBJC%"
   }
