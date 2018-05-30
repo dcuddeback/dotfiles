@@ -153,9 +153,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- screen saver commands
     , ((modMask .|. shiftMask , xK_Escape), spawn "xscreensaver-command -lock")
 
-    -- start a pomodoro
-    , ((modMask .|. shiftMask , xK_n), spawn "touch ~/.pomodoro_session")
-
     -- layouts
     , ((modMask, xK_space ), sendMessage NextLayout)
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)

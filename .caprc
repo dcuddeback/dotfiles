@@ -1,5 +1,0 @@
-begin
-  require 'capistrano_colors'
-rescue LoadError
-  $stderr.puts "Could not load capistrano_colors gem. Make sure it's in your gemset."
-end
