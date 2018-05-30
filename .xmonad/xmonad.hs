@@ -97,7 +97,7 @@ myManageHook =  composeAll . concat $
 
 myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWorkspace "9:misc" gimpLayout $ standardLayouts
   where
-    standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| Grid ||| Full)
+    standardLayouts = avoidStruts $ (tiled ||| reflectTiled ||| Mirror tiled ||| GridRatio (7/5) ||| Full)
 
     --Layouts
     tiled         = smartBorders (ResizableTall 1 (2/100) (1/2) [])
@@ -107,9 +107,9 @@ myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWor
     fullL         = avoidStruts $ full
 
     --Im Layout
-    imLayout      = avoidStruts $ smartBorders $ withIM pidginRatio pidginRoster $ withIM empathyRatio empathyRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| Grid)
+    imLayout      = avoidStruts $ smartBorders $ withIM pidginRatio pidginRoster $ withIM empathyRatio empathyRoster $ reflectHoriz $ withIM skypeRatio skypeRoster (tiled ||| reflectTiled ||| GridRatio (7/5))
       where
-        chatLayout    = Grid
+        chatLayout    = GridRatio (7/5)
         pidginRatio   = (1%9)
         empathyRatio  = (1%8)
         skypeRatio    = (1%8)
@@ -123,7 +123,7 @@ myLayoutHook = onWorkspace "8:chat" imLayout $ onWorkspace "7:mail" webL $ onWor
     -- Gimp Layout
     gimpLayout    = avoidStruts $ smartBorders $ withIM toolboxRatio gimpToolbox $ reflectHoriz $ withIM dockRatio gimpDock imageLayout
       where
-        imageLayout   = (tiled ||| reflectTiled ||| Grid ||| Full)
+        imageLayout   = (tiled ||| reflectTiled ||| GridRatio (7/5) ||| Full)
         toolboxRatio  = (1%9)
         dockRatio     = (1%8)
         gimpToolbox   = (Role "gimp-toolbox")
