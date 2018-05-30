@@ -43,16 +43,6 @@ then
   alias pbpaste='xsel --clipboard --output'
 fi
 
-# JAVA_HOME for OSX
-if [ -d /System/Library/Frameworks/JavaVM.framework/Home/ ]; then
-  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-fi
-
-# JAVA_HOME for Linux
-if [ -d /usr/lib/jvm/java-6-openjdk/ ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
-fi
-
 # Make use of keychain (if installed) to manage ssh-agent and gpg-agent
 if command -v keychain > /dev/null 2>&1 ; then
   eval `keychain --eval`
