@@ -30,6 +30,11 @@ __prepend_path "$HOME/.rbenv/bin"
 # Rust/Cargo
 __prepend_path "$HOME/.cargo/bin"
 
+# asdf
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  source "$HOME/.asdf/asdf.sh"
+fi
+
 # cross-compilers
 if [ -d $HOME/x-tools ]; then
   for dir in $(find $HOME/x-tools/ -mindepth 2 -maxdepth 2 -type d -name bin); do
@@ -43,15 +48,6 @@ __prepend_path "$HOME/bin"
 # help Cargo find SSL certs on NetBSD
 if [ -f "/etc/ssl/certs/ca-certificates.crt" ]; then
   export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
-fi
-
-# asdf
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
-
-  if [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
-    source "$HOME/.asdf/completions/asdf.bash"
-  fi
 fi
 
 export PATH

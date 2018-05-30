@@ -1,5 +1,10 @@
 source ~/.bashrc
 
+# bash copmletions for asdf
+if [ -f "$HOME/.asdf/completions/asdf.bash" ]; then
+  source "$HOME/.asdf/completions/asdf.bash"
+fi
+
 # bash completion from Homebrew
 if [ -d "/usr/local/etc/bash_completion.d" ]; then
   if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash"      ]; then source "/usr/local/etc/bash_completion.d/git-completion.bash";      fi
