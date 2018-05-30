@@ -6,9 +6,9 @@ if [ -f "$HOME/.bashrc" -a \! -L "$HOME/.bashrc" ]; then
   mv "$HOME/.bashrc" "$HOME/.bashrc_default"
 fi
 
-# link dotfiles (skip .git directory and setup.sh; handle .cargo/config and dconf separately)
+# link dotfiles (skip .git directory and setup.sh; handle .cargo/*, .config/*, and dconf/* separately)
 for file in $(ls -A "$HOME/dotfiles/"); do
-  if [ "$file" = ".git" -o "$file" = "setup.sh" -o "$file" = ".cargo" -o "$file" = "dconf" ]; then
+  if [ "$file" = ".git" -o "$file" = "setup.sh" -o "$file" = ".cargo" -o "$file" = ".config" -o "$file" = "dconf" ]; then
     continue
   fi
 
@@ -18,15 +18,19 @@ for file in $(ls -A "$HOME/dotfiles/"); do
   fi
 done
 
-# link .cargo/config
-if [ \! -L "$HOME/.cargo/config" ]; then
-  if [ \! -d "$HOME/.cargo" ]; then
-    mkdir "$HOME/.cargo"
-  fi
+# link contents of .cargo/ and .config/ directories
+for dir in .cargo .config; do
+  for file in $(ls -A "$HOME/dotfiles/$dir/"); do
+    if [ \! -L "$HOME/$dir/$file" ]; then
+      if [ \! -d "$HOME/$dir" ]; then
+        mkdir "$HOME/$dir"
+      fi
 
-  echo "link: $HOME/.cargo/config -> $HOME/dotfiles/.cargo/config"
-  ln -s "$HOME/.cargo/config" "$HOME/.cargo/"
-fi
+      echo "link: $HOME/$dir/$file -> $HOME/dotfiles/$dir/$file"
+      ln -s "$HOME/dotfiles/$dir/$file" "$HOME/$dir/"
+    fi
+  done
+done
 
 # load dconf settings
 if [ "$(which dconf)" ]; then
