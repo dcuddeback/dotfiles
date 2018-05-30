@@ -56,7 +56,7 @@ endfunction
 
 function! SyntaxCheckers_haskell_ghc_mod_GetLocList() dict
     let makeprg = self.makeprgBuild({
-        \ 'exe': self.getExecEscaped() . ' check' . (s:ghc_mod_new ? ' --boundary=""' : '') })
+        \ 'exe': self.getExecEscaped() . (s:ghc_mod_new ? ' --boundary=""' : '') . ' check' })
 
     let errorformat =
         \ '%-G%\s%#,' .
