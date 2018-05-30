@@ -24,9 +24,6 @@ function __append_path {
 # local installations
 __prepend_path "$HOME/local/bin"
 
-# rbenv
-__prepend_path "$HOME/.rbenv/bin"
-
 # Rust/Cargo
 __prepend_path "$HOME/.cargo/bin"
 

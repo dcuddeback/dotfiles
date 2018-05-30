@@ -53,14 +53,6 @@ if [ -d /usr/lib/jvm/java-6-openjdk/ ]; then
   export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
 fi
 
-# Ruby env
-if command -v rbenv > /dev/null 2>&1 ; then
-  if [ -z "$__rbenv_init" ]; then
-    eval "$(rbenv init -)"
-    export __rbenv_init=1
-  fi
-fi
-
 # Make use of keychain (if installed) to manage ssh-agent and gpg-agent
 if command -v keychain > /dev/null 2>&1 ; then
   eval `keychain --eval --clear`
