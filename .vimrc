@@ -59,6 +59,9 @@ setlocal cursorline   " enable in active window just after vim loads
 
 let mapleader = ","
 
+" close preview window
+nnoremap <Leader>p :pclose<CR>
+
 " highlight past 80 columns
 "highlight OverLength cterm=reverse
 "match OverLength /\%81v.*/
