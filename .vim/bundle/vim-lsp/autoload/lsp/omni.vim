@@ -154,8 +154,9 @@ function! lsp#omni#get_vim_completion_item(item) abort
         let l:word = a:item['label']
         let l:abbr = a:item['label']
     endif
+    let l:kind = lsp#omni#get_kind_text(a:item)
     let l:info = has_key(a:item, 'detail') ? a:item['detail'] : ''
-    let l:menu = lsp#omni#get_kind_text(a:item)
+    let l:menu = has_key(a:item, 'detail') ? kind . repeat(' ', 10-len(kind)) . ' ' . split(a:item['detail'], '\n')[0] : kind
     let l:completion = { 'word': l:word, 'abbr': l:abbr, 'menu': l:menu, 'info': l:info, 'icase': 1, 'dup': 1 }
     if has_key(a:item, 'documentation')
         if type(a:item['documentation']) == type('')
