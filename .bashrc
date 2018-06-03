@@ -23,6 +23,7 @@ function __append_path {
 
 # local installations
 __prepend_path "$HOME/local/bin"
+__prepend_path "$HOME/.local/bin"
 
 # Rust/Cargo
 __prepend_path "$HOME/.cargo/bin"
