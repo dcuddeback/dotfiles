@@ -23,10 +23,10 @@ URxvt*shading:          25
 URxvt*fading:           25
 
 ! fonts
-URxvt*font:             -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u
-URxvt*boldFont:         -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-u
-URxvt*italicFont:       -*-terminus-medium-o-*-*-12-*-*-*-*-*-*-u
-URxvt*boldItalicFont:   -*-terminus-bold-o-*-*-12-*-*-*-*-*-*-u
+URxvt*font:             -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+URxvt*boldFont:         -*-terminus-bold-r-*-*-14-*-*-*-*-*-*-u
+URxvt*italicFont:       -*-terminus-medium-o-*-*-14-*-*-*-*-*-*-u
+URxvt*boldItalicFont:   -*-terminus-bold-o-*-*-14-*-*-*-*-*-*-u
 
 ! extensions
 URxvt*perl-ext:
