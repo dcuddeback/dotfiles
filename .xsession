@@ -19,4 +19,8 @@ if which stalonetray > /dev/null; then
   stalonetray --geometry 100x1+0-0 --icon-size=16 --kludges=force_icons_size --skip-taskbar --sticky --window-strut bottom --transparent --tint-color black --tint-level 180 &
 fi
 
-exec ssh-agent xmonad
+if type xmonad; then
+  exec ssh-agent xmonad
+else
+  exec mate-session
+fi
