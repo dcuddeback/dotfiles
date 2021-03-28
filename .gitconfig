@@ -40,7 +40,7 @@
   history = log --first-parent --pretty=oneline --abbrev-commit --decorate --color
   tree    = log --graph --pretty=oneline --abbrev-commit --decorate --color
   forest  = log --graph --pretty=oneline --abbrev-commit --decorate --color --all
-  recent  = log --graph --pretty=oneline --abbrev-commit --decorate --color -10
+  recent  = log --graph --pretty=oneline --abbrev-commit --decorate --color -30
   message = log --format=format:%s -1
   last    = log --format=format:%H -1
   revs    = log --format=format:%H
