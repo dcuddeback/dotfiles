@@ -45,3 +45,4 @@
   last    = log --format=format:%H -1
   revs    = log --format=format:%H
   preview = diff --staged
+  ff      = merge --ff-only
