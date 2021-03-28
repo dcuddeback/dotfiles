@@ -6,6 +6,17 @@ if [ -f "$HOME/.bashrc" -a \! -L "$HOME/.bashrc" ]; then
   mv "$HOME/.bashrc" "$HOME/.bashrc_default"
 fi
 
+HISTORIES=".bash_history .lesshst .wget-hsts"
+HISTORIES="$HISTORIES .psql_history .mysql_history .rediscli_history"
+HISTORIES="$HISTORIES .python_history .julia_history .octave_hist .gnuplot_history"
+
+# disable history files
+for file in $HISTORIES; do
+  echo "link: $HOME/$file -> /dev/null"
+  rm -f "$HOME/$file"
+  ln -s /dev/null "$HOME/$file"
+done
+
 # link dotfiles (skip .git directory and setup.sh; handle .cargo/*, .config/*, and dconf/* separately)
 for file in $(ls -A "$HOME/dotfiles/"); do
   if [ "$file" = ".git" -o "$file" = "setup.sh" -o "$file" = ".cargo" -o "$file" = ".config" -o "$file" = "dconf" ]; then
