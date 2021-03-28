@@ -4,7 +4,8 @@
 
 [user]
   name  = David Cuddeback
-  email = "david.cuddeback@gmail.com"
+  email = "david@cuddeback.io"
+  signingKey = "8806EDB596E10F6B"
 
 [color]
   ui = auto
