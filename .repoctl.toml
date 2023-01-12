@@ -1,0 +1,503 @@
+########################################################################
+### APPLICATION SETTINGS                                             ###
+########################################################################
+
+[repoctl.logger]
+level = "info"
+
+########################################################################
+### PROJECT CATEGORIES                                               ###
+########################################################################
+
+[[phabricator.default.categories]]
+name = "Languages"
+color = "pink"
+icon = "language"
+slug = "lang"
+
+[[phabricator.default.categories]]
+name = "Project Type"
+color = "yellow"
+slug = "tag"
+
+### IGNORE OTHER PROJECT TYPES ###
+
+[[phabricator.default.categories]]
+name = "(software)"
+icon = "software"
+color = "blue"
+ignore = true
+
+[[phabricator.default.categories]]
+name = "(tasks)"
+icon = "tasks"
+ignore = true
+
+[[phabricator.default.categories]]
+name = "(infrastructure)"
+icon = "infrastructure"
+ignore = true
+
+[[phabricator.default.categories]]
+name = "(bugs)"
+icon = "bugs"
+ignore = true
+
+########################################################################
+### DEFAULT SETTINGS                                                 ###
+########################################################################
+
+[profile.default]
+vcs = "git"
+mirror = "private"
+mirror_description = "Mirror of %repo_url. %repo_description"
+mirror_display = true
+default_branch = "master"
+
+[profile.default.phabricator.default]
+space = "S1" # private
+project_icon = "software"
+project_color = "blue"
+project = false
+project_space = "S1" # Private
+allow_dangerous_changes = true
+allow_enormous_changes = false
+permanent_refs = ["master"]
+
+[profile.default.github.default]
+credential = "K2"
+projects = false
+wiki = false
+vulnerability_alerts = false
+automated_security_fixes = false
+
+[profile.default.gitlab.default]
+credential = "K3"
+issues = false
+merges = false
+forks = false
+builds = false
+wiki = false
+snippets = false
+pages = false
+containers = false
+shared_runners = false
+request_access = false
+lfs = false
+emails = false
+public_jobs = false
+auto_devops = false
+print_mr_link = false
+
+[profile.default.bitbucket.default]
+credential = "K4"
+issues = false
+wiki = false
+forks = false
+pipelines = false
+
+[profile.default.bitbucket.personal]
+mirror = false
+
+[profile.default.gitlab.personal]
+mirror = false
+
+### PUBLIC #############################################################
+
+[profile.public]
+mirror = "private"      # only select mirrors are shown publicly
+mirror_display = false  # don't show private URI to public
+
+[profile.public.phabricator.default]
+space = "S2" # Public
+project_space = "S2" # Public
+
+[profile.public.github.default]
+mirror = "public"
+display = true
+#description = "Mirror of %repo_url. (No PRs!) %repo_description"
+description = "%repo_description"
+
+### ARCHIVE ############################################################
+
+[profile.archive.phabricator]
+status = "inactive"
+
+[profile.archive.github]
+archived = true
+
+#[profile.archive.gitlab]
+#archived = true
+
+### UNARCHIVE ##########################################################
+
+[profile.unarchive.phabricator]
+status = "active"
+
+[profile.unarchive.github]
+archived = false
+
+#[profile.unarchive.gitlab]
+#archived = false
+
+### CONTRIB ############################################################
+
+[profile.contrib.github.default]
+#description = "Mirror of %repo_url. %repo_description"
+issues = true
+
+########################################################################
+### LANGUAGE PROFILES                                                ###
+########################################################################
+
+### C ##################################################################
+
+[profile.c.phabricator.default]
+projects = ["c"]
+
+[profile.c.github]
+topics = ["c"]
+
+[profile.c.bitbucket]
+language = "c"
+
+[profile.c.gitlab]
+tags = ["c"]
+
+### C++ ################################################################
+
+[profile.cpp.phabricator.default]
+projects = ["cpp"]
+
+[profile.cpp.github]
+topics = ["cpp"]
+
+[profile.cpp.bitbucket]
+language = "c++"
+
+[profile.cpp.gitlab]
+tags = ["cpp"]
+
+### CLOJURE ############################################################
+
+[profile.clojure.phabricator.default]
+projects = ["clojure"]
+
+[profile.clojure.github]
+topics = ["clojure"]
+
+[profile.clojure.bitbucket]
+language = "clojure"
+
+[profile.clojure.gitlab]
+tags = ["clojure"]
+
+### ELIXIR #############################################################
+
+[profile.elixir.phabricator.default]
+projects = ["elixir"]
+
+[profile.elixir.github]
+topics = ["elixir"]
+
+[profile.elixir.bitbucket]
+language = "elixir"
+
+[profile.elixir.gitlab]
+tags = ["elixir"]
+
+### ERLANG #############################################################
+
+[profile.erlang.phabricator.default]
+projects = ["erlang"]
+
+[profile.erlang.github]
+topics = ["erlang"]
+
+[profile.erlang.bitbucket]
+language = "erlang"
+
+[profile.erlang.gitlab]
+tags = ["erlang"]
+
+### HASKELL ############################################################
+
+[profile.haskell.phabricator.default]
+projects = ["haskell"]
+
+[profile.haskell.github]
+topics = ["haskell"]
+
+[profile.haskell.bitbucket]
+language = "haskell"
+
+[profile.haskell.gitlab]
+tags = ["haskell"]
+
+### JULIA ##############################################################
+
+[profile.julia.phabricator.default]
+projects = ["julia"]
+
+[profile.julia.github]
+topics = ["julia"]
+
+[profile.julia.bitbucket]
+language = "julia"
+
+[profile.julia.gitlab]
+tags = ["julia"]
+
+### KOTLIN #############################################################
+
+[profile.kotlin.phabricator.default]
+projects = ["kotlin"]
+
+[profile.kotlin.github]
+topics = ["kotlin"]
+
+[profile.kotlin.bitbucket]
+language = "kotlin"
+
+[profile.kotlin.gitlab]
+tags = ["kotlin"]
+
+### LATEX ##############################################################
+
+[profile.latex.phabricator.default]
+projects = ["latex"]
+
+[profile.latex.github]
+topics = ["latex"]
+
+[profile.latex.bitbucket]
+language = "latex"
+
+[profile.latex.gitlab]
+tags = ["latex"]
+
+### OBJECTIVE-C ########################################################
+
+[profile.objective-c.phabricator.default]
+projects = ["objective-c"]
+
+[profile.objective-c.github]
+topics = ["objective-c"]
+
+[profile.objective-c.bitbucket]
+language = "objective-c"
+
+[profile.objective-c.gitlab]
+tags = ["objective-c"]
+
+### OCTAVE #############################################################
+
+[profile.octave.phabricator.default]
+projects = ["octave"]
+
+[profile.octave.github]
+topics = ["octave"]
+
+[profile.octave.bitbucket]
+language = "octave"
+
+[profile.octave.gitlab]
+tags = ["octave"]
+
+### PYTHON #############################################################
+
+[profile.python.phabricator.default]
+projects = ["python"]
+
+[profile.python.github]
+topics = ["python"]
+
+[profile.python.bitbucket]
+language = "python"
+
+[profile.python.gitlab]
+tags = ["python"]
+
+### RACKET #############################################################
+
+[profile.racket.phabricator.default]
+projects = ["racket"]
+
+[profile.racket.github]
+topics = ["racket"]
+
+[profile.racket.bitbucket]
+language = "racket"
+
+[profile.racket.gitlab]
+tags = ["racket"]
+
+### RUBY ###############################################################
+
+[profile.ruby.phabricator.default]
+projects = ["ruby"]
+
+[profile.ruby.github]
+topics = ["ruby"]
+
+[profile.ruby.bitbucket]
+language = "ruby"
+
+[profile.ruby.gitlab]
+tags = ["ruby"]
+
+### RUST ###############################################################
+
+[profile.rust.phabricator.default]
+projects = ["rust"]
+
+[profile.rust.github]
+topics = ["rust"]
+
+[profile.rust.bitbucket]
+language = "rust"
+
+[profile.rust.gitlab]
+tags = ["rust"]
+
+### SHELL ##############################################################
+
+[profile.shell.phabricator.default]
+projects = ["shell"]
+
+[profile.shell.github]
+topics = ["shell"]
+
+[profile.shell.bitbucket]
+language = "shell"
+
+[profile.shell.gitlab]
+tags = ["shell"]
+
+### SWIFT ##############################################################
+
+[profile.swift.phabricator.default]
+projects = ["swift"]
+
+[profile.swift.github]
+topics = ["swift"]
+
+[profile.swift.bitbucket]
+language = "swift"
+
+[profile.swift.gitlab]
+tags = ["swift"]
+
+########################################################################
+### PROJECT TYPE PROFILES                                            ###
+########################################################################
+
+### ASTRONOMY ##########################################################
+
+[profile.astronomy.phabricator.default]
+projects = ["astronomy"]
+
+[profile.astronomy.github]
+topics = ["astronomy"]
+
+[profile.astronomy.gitlab]
+tags = ["astronomy"]
+
+### DATABASE ###########################################################
+
+[profile.database.phabricator.default]
+projects = ["database"]
+
+[profile.database.github]
+topics = ["database"]
+
+[profile.database.gitlab]
+tags = ["database"]
+
+### DESKTOP ############################################################
+
+[profile.desktop.phabricator.default]
+projects = ["desktop"]
+
+[profile.desktop.github]
+topics = ["desktop"]
+
+[profile.desktop.gitlab]
+tags = ["desktop"]
+
+### EXPERIMENTAL ##
+
+[profile.experimental.phabricator.default]
+projects = ["experimental"]
+
+### INFRASTRUCTURE #####################################################
+
+[profile.infrastructure.phabricator.default]
+projects = ["infrastructure"]
+
+[profile.infrastructure.github]
+topics = ["infrastructure"]
+
+[profile.infrastructure.gitlab]
+tags = ["infrastructure"]
+
+### HARDWARE ###########################################################
+
+[profile.hardware.phabricator.default]
+projects = ["hardware"]
+
+[profile.hardware.github]
+topics = ["hardware"]
+
+[profile.hardware.gitlab]
+tags = ["hardware"]
+
+### LIBRARY ############################################################
+
+[profile.library.phabricator.default]
+projects = ["library"]
+
+[profile.library.github]
+topics = ["library"]
+
+[profile.library.gitlab]
+tags = ["library"]
+
+### TERMINAL ###########################################################
+
+[profile.terminal.phabricator.default]
+projects = ["terminal"]
+
+[profile.terminal.github]
+topics = ["terminal"]
+
+[profile.terminal.gitlab]
+tags = ["terminal"]
+
+### WEB ################################################################
+
+[profile.web.phabricator.default]
+projects = ["web"]
+
+[profile.web.github]
+topics = ["web"]
+
+[profile.web.gitlab]
+tags = ["web"]
+
+### WRITING ############################################################
+
+[profile.writing.phabricator.default]
+projects = ["writing"]
+project_icon = "writing"
+
+### ZFS ################################################################
+
+[profile.zfs.phabricator.default]
+projects = ["zfs"]
+
+[profile.zfs.github]
+topics = ["zfs"]
+
+[profile.zfs.gitlab]
+tags = ["zfs"]
