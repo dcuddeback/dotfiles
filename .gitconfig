@@ -46,3 +46,5 @@
   revs    = log --format=format:%H
   preview = diff --staged
   ff      = merge --ff-only
+[init]
+	defaultBranch = master
