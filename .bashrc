@@ -1,3 +1,5 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # system default ~/.bashrc
 if [ -f "$HOME/.bashrc_default" ]; then
   source "$HOME/.bashrc_default"
