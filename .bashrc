@@ -30,6 +30,9 @@ __prepend_path "$HOME/.local/bin"
 # Rust/Cargo
 __prepend_path "$HOME/.cargo/bin"
 
+# Python
+export PIPENV_VENV_IN_PROJECT=1
+
 # asdf
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   source "$HOME/.asdf/asdf.sh"
