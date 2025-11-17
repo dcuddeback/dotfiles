@@ -15,6 +15,9 @@
   submodulesummary   = true
   showUntrackedFiles = all
 
+[checkout]
+  defaultRemote = origin
+
 [push]
   default = upstream
 
